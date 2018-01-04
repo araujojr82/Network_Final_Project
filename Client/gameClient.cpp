@@ -37,7 +37,7 @@ void updateLobbyList( InitInfo&, string, cConnection& );
 int readCase( string&, InitInfo&, vector<string>&, cConnection& );
 
 // Global variables
-vector<Lobby> serverLobbies;	// The List of existing Lobbies
+vector<Lobby> g_vecServerLobbies;	// The List of existing Lobbies
 
 int main()
 {
@@ -205,7 +205,7 @@ void updateLobbyList( InitInfo& user, string message, cConnection& myConn )
 
 		int size = stoi( numberOfLobbies );
 		//serverLobbies.resize( size );
-		serverLobbies.clear();
+		g_vecServerLobbies.clear();
 
 		if( size != 0 )
 		{
@@ -258,7 +258,7 @@ void updateLobbyList( InitInfo& user, string message, cConnection& myConn )
 						newLobby.hostName = lInfo.substr( 0, lInfo.find( "\n", 0 ) );
 						//lInfo = lInfo.substr( lInfo.find( ",", 0 ) + 1, lInfo.length() ); // new string
 
-						serverLobbies.push_back( newLobby );
+						g_vecServerLobbies.push_back( newLobby );
 					}
 				}
 
@@ -274,16 +274,16 @@ void updateLobbyList( InitInfo& user, string message, cConnection& myConn )
 			// Print the lobby list
 			cout << "| Map Name           | Lobby Name         | Game Mode          | Spots (O/T) | Host Name          |" << endl;			
 			
-			for( int j = 0; j != serverLobbies.size(); j++ )
+			for( int j = 0; j != g_vecServerLobbies.size(); j++ )
 			{
 				cout << "| " 
-					<< setw( 18 ) << left << serverLobbies[j].mapName << setw( 2 ) << " | "
-					<< setw( 18 ) << serverLobbies[j].lobbyName << setw( 2 ) << " | "
-					<< setw( 18 ) << getGameModeText( serverLobbies[j].gameMode ) << setw( 2 ) << " | "
-					<< "( " << setw( 2 ) << to_string( serverLobbies[j].openSpots )
-					<< " / " << setw( 2 ) << to_string( serverLobbies[j].totalSpots )
+					<< setw( 18 ) << left << g_vecServerLobbies[j].mapName << setw( 2 ) << " | "
+					<< setw( 18 ) << g_vecServerLobbies[j].lobbyName << setw( 2 ) << " | "
+					<< setw( 18 ) << getGameModeText( g_vecServerLobbies[j].gameMode ) << setw( 2 ) << " | "
+					<< "( " << setw( 2 ) << to_string( g_vecServerLobbies[j].openSpots )
+					<< " / " << setw( 2 ) << to_string( g_vecServerLobbies[j].totalSpots )
 					<< " )" << setw( 2 ) << " | "
-					<< setw( 18 ) << serverLobbies[j].hostName << " | " << endl;
+					<< setw( 18 ) << g_vecServerLobbies[j].hostName << " | " << endl;
 			}
 			system( "pause" );
 		}

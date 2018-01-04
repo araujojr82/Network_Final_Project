@@ -89,36 +89,44 @@ FD_SET g_writeSet;              // A set of sockets to be written
 FD_SET g_readSet;               // A set of sockets to be read
 long long g_requestedID = 0;    // Controls unique request IDs
 
-vector<Lobby> serverLobbies;	// The List of existing Lobbies
+vector< Lobby* > g_vecServerLobbies;	// The List of existing Lobbies
 
 int main()
 {
 	// HACK: ADD SOME LOBBIES TO THE LIST FOR TESTING PURPOSES
-	serverLobbies.clear();
-	Lobby newLobby;
-	newLobby.mapName = "map1";
-	newLobby.lobbyName = "lobby1";
-	newLobby.gameMode = gameModes::FREE_FOR_ALL;
-	newLobby.openSpots = 9;
-	newLobby.totalSpots = 10;
-	newLobby.hostName = "Quaker";
-	serverLobbies.push_back( newLobby );
+	g_vecServerLobbies.clear();
+	{
+		Lobby* newLobby = new Lobby();
+		newLobby->mapName = "map1";
+		newLobby->lobbyName = "lobby1";
+		newLobby->gameMode = gameModes::FREE_FOR_ALL;
+		newLobby->openSpots = 9;
+		newLobby->totalSpots = 10;
+		newLobby->hostName = "Quaker";
+		g_vecServerLobbies.push_back( newLobby );
+	}
 
-	newLobby.mapName = "map2";
-	newLobby.lobbyName = "lobby2";
-	newLobby.gameMode = gameModes::DUEL;
-	newLobby.openSpots = 2;
-	newLobby.totalSpots = 10;
-	newLobby.hostName = "Betamaster";
-	serverLobbies.push_back( newLobby );
+	{
+		Lobby* newLobby = new Lobby();
+		newLobby->mapName = "map2";
+		newLobby->lobbyName = "lobby2";
+		newLobby->gameMode = gameModes::DUEL;
+		newLobby->openSpots = 2;
+		newLobby->totalSpots = 10;
+		newLobby->hostName = "Betamaster";
+		g_vecServerLobbies.push_back( newLobby );
+	}
 
-	newLobby.mapName = "map3";
-	newLobby.lobbyName = "lobby3";
-	newLobby.gameMode = gameModes::TEAM;
-	newLobby.openSpots = 1;
-	newLobby.totalSpots = 6;
-	newLobby.hostName = "Newbie";
-	serverLobbies.push_back( newLobby );
+	{
+		Lobby* newLobby = new Lobby();
+		newLobby->mapName = "map3";
+		newLobby->lobbyName = "lobby3";
+		newLobby->gameMode = gameModes::TEAM;
+		newLobby->openSpots = 1;
+		newLobby->totalSpots = 6;
+		newLobby->hostName = "Newbie";
+		g_vecServerLobbies.push_back( newLobby );
+	}
 	// END HACK
 
 	// Socket variables
@@ -458,9 +466,21 @@ void readSocket( LPSOCKET_INFORMATION sa )
 	}
 }
 
-/**
-	Treats a message and set the socket for reading
-*/
+bool FindLobbyByName( string roomName, Lobby* theLobby )
+{
+	// Look in the Lobby Vector for a lobby with this name
+	for( int i = 0; i != g_vecServerLobbies.size(); i++ )
+	{
+		if( g_vecServerLobbies[i]->lobbyName == roomName )
+		{
+			theLobby = g_vecServerLobbies[i];
+			return true;
+		}
+	}
+	return false;
+}
+
+//	Treats a message and set the socket for reading
 void treatMessage( LPSOCKET_INFORMATION sa, string msg )
 {
 	cBuffer buff( msg.size() );
@@ -484,7 +504,7 @@ void treatMessage( LPSOCKET_INFORMATION sa, string msg )
 	{
 		// Send the List of Lobbys on this Server to the requester
 		string listOfLobbies;
-		listOfLobbies = "List of available lobbies:" + to_string( serverLobbies.size() );
+		listOfLobbies = "List of available lobbies:" + to_string( g_vecServerLobbies.size() );
 		sendMsg( sa, listOfLobbies, "Chat Server" );
 
 	}
@@ -503,13 +523,13 @@ void treatMessage( LPSOCKET_INFORMATION sa, string msg )
 
 		// Return the Lobby information
 		string lobbyInfo = "Lobby" + to_string( lobbyNum ) + ":" +
-							serverLobbies[lobbyNum].mapName + "," +
-							serverLobbies[lobbyNum].lobbyName + "," +
+							g_vecServerLobbies[lobbyNum]->mapName + "," +
+							g_vecServerLobbies[lobbyNum]->lobbyName + "," +
 							//getGameModeText( serverLobbies[lobbyNum].gameMode ) + "," +
-							to_string( serverLobbies[lobbyNum].gameMode ) + "," +
-							to_string( serverLobbies[lobbyNum].openSpots ) + "," +
-							to_string( serverLobbies[lobbyNum].totalSpots ) + "," +
-							serverLobbies[lobbyNum].hostName;
+							to_string( g_vecServerLobbies[lobbyNum]->gameMode ) + "," +
+							to_string( g_vecServerLobbies[lobbyNum]->openSpots ) + "," +
+							to_string( g_vecServerLobbies[lobbyNum]->totalSpots ) + "," +
+							g_vecServerLobbies[lobbyNum]->hostName;
 
 		sendMsg( sa, lobbyInfo, "Chat Server" );
 	}
@@ -545,43 +565,37 @@ void treatMessage( LPSOCKET_INFORMATION sa, string msg )
 
 			// Split the message into the Lobby Info
 			// mapName + "," + lobbyName + "," + gameMode + "," + totalSpots;
-			Lobby newLobby;
+			Lobby* newLobby = new Lobby();
 
-			newLobby.mapName = msg.substr( 0, msg.find( ",", 0 ) );
+			newLobby->mapName = msg.substr( 0, msg.find( ",", 0 ) );
 			msg = msg.substr( msg.find( ",", 0 ) + 1, msg.length() ); // new string
 
-			newLobby.lobbyName = msg.substr( 0, msg.find( ",", 0 ) );
+			newLobby->lobbyName = msg.substr( 0, msg.find( ",", 0 ) );
 			msg = msg.substr( msg.find( ",", 0 ) + 1, msg.length() ); // new string
 
-			newLobby.gameMode = ( gameModes )stoi( msg.substr( 0, msg.find( ",", 0 ) ) );
+			newLobby->gameMode = ( gameModes )stoi( msg.substr( 0, msg.find( ",", 0 ) ) );
 			msg = msg.substr( msg.find( ",", 0 ) + 1, msg.length() ); // new string					    
 			
-			newLobby.totalSpots = stoi( msg.substr( 0, msg.find( "\n", 0 ) ) );
+			newLobby->totalSpots = stoi( msg.substr( 0, msg.find( "\n", 0 ) ) );
 			msg = msg.substr( msg.find( ",", 0 ) + 1, msg.length() ); // new string
 
-			newLobby.hostName = userName;
-			newLobby.openSpots = newLobby.totalSpots - 1;
+			newLobby->hostName = userName;
+			newLobby->openSpots = newLobby->totalSpots - 1;
 
 			// Look in the Lobby Vector for a lobby with this name
-			for( int i = 0; i != serverLobbies.size(); i++ )
-			{
-				if( serverLobbies[i].lobbyName == newLobby.lobbyName )
-				{
-					bIsDuplicated = true;
-					break;
-				}
-			}
+			bIsDuplicated = FindLobbyByName( newLobby->lobbyName, newLobby );
+
 			if( bIsDuplicated )
 			{	// Lobby already exists, send msg to the client
 				sendMsg( sa, "The lobby name already exists on this server!", "Chat Server" );
 			}
 			else
 			{	// Add the lobby to the list of Lobbies
-				serverLobbies.push_back( newLobby );
-				sa->m_rooms.push_back( newLobby.lobbyName );
+				g_vecServerLobbies.push_back( newLobby );
+				sa->m_rooms.push_back( newLobby->lobbyName );
 
 				// Send the Create Message to all known Sockets with this roomName
-				msgToRoom( sa, newLobby.lobbyName, " has connected to ", "Chat Server" );
+				msgToRoom( sa, newLobby->lobbyName, " has connected to ", "Chat Server" );
 			}
 
 		//} // elseif (!sa->m_isAuthenticated)
@@ -591,7 +605,6 @@ void treatMessage( LPSOCKET_INFORMATION sa, string msg )
 	case JOIN_ROOM: 
 	{
 		bool bLobbyFound = false;
-		int lobbyNumber = NULL;
 
 		//// The user is not authenticated
 		//if( !sa->m_isAuthenticated ) {
@@ -606,25 +619,17 @@ void treatMessage( LPSOCKET_INFORMATION sa, string msg )
 				roomName.push_back( buff.deserializeChar() );
 			}
 
-			// Look in the Lobby Vector for a lobby with this name
-			for( int i = 0; i != serverLobbies.size(); i++ )
-			{
-				if( serverLobbies[i].lobbyName == roomName )
-				{
-					bLobbyFound = true;
-					lobbyNumber = i;
-					break;
-				}
-			}
+			Lobby* theLobby = new Lobby();
+			bLobbyFound = FindLobbyByName( roomName, theLobby );
 
 			if( bLobbyFound )
 			{
 				// Does the lobby have any available spots
-				if( serverLobbies[lobbyNumber].openSpots >= 1 )
+				if( theLobby->openSpots >= 1 )
 				{	// Yes
 
 					// Use one spot
-					serverLobbies[lobbyNumber].openSpots--;
+					theLobby->openSpots--;
 
 					sa->m_rooms.push_back( roomName );
 
@@ -660,18 +665,31 @@ void treatMessage( LPSOCKET_INFORMATION sa, string msg )
 
 	case LEAVE_ROOM: 
 	{
+		bool bLobbyFound = false;
 		string roomName;
 		short roomNameLength = buff.deserializeChar();
 		for( short i = 0; i < roomNameLength; i++ )
 			roomName.push_back( buff.deserializeChar() );
 
-		// Erase the room from the vector and send the apropriated messages
-		for( int i = 0; i < sa->m_rooms.size(); i++ )
-			if( roomName == sa->m_rooms[i] )
-				sa->m_rooms[i].erase();
+		Lobby *theLobby = new Lobby();
 
-		// Send the Leave Message to all known Sockets with this roomName
-		msgToRoom( sa, roomName, " has disconnected from ", "Chat Server" );
+		// Look in the Lobby Vector for a lobby with this name
+		bLobbyFound = FindLobbyByName( roomName, theLobby );
+
+		if( bLobbyFound )
+		{
+			// Erase the room from the vector and send the apropriated messages
+			for( int i = 0; i < sa->m_rooms.size(); i++ )
+				if( roomName == sa->m_rooms[i] )
+					sa->m_rooms[i].erase();
+
+			// Send the Leave Message to all known Sockets with this roomName
+			msgToRoom( sa, roomName, " has disconnected from ", "Chat Server" );
+		}
+		else
+		{
+
+		}
 
 	} // LEAVE_ROOM local scope
 					 break; // case LEAVE_ROOM
