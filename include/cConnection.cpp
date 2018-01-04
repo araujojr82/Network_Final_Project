@@ -163,6 +163,50 @@ void cConnection::sendMessage( InitInfo info, char msgID, string message )
 	}//!Block for local variables
 	break;	// case GET_LOBBY_NUM	
 
+	case CREATE_ROOM:
+	{
+		// User name length:
+		char userNameLength = info.username.size();
+
+		//// Room length:
+		//char roomNameLength = info.room.size();
+
+		// Message length
+		short msgLength = message.size();
+
+		//                Packet        MSG_ID          NAME SIZE        NAME             MSG LENGHT        MESSAGE
+		packetLength = sizeof( int ) + sizeof( char ) + sizeof( char ) + userNameLength + sizeof( short ) + msgLength;
+		
+		// Check if the packet is too big
+		if( packetLength > 65542 )
+		{ // max lenth shouldn't be more than 65,542 bytes        
+			cout << "Buffer overflow sendind the CREATE message!\n";
+			Sleep( 3000 );
+			return;
+		}
+
+		// Now serialize it
+		connBuff = new cBuffer( packetLength );
+		connBuff->serializeIntLE( packetLength );
+		connBuff->serializeChar( CREATE_ROOM );
+
+		connBuff->serializeChar( userNameLength );
+
+		for( int i = 0; i < userNameLength; i++ )
+		{
+			connBuff->serializeChar( info.username[i] );
+		}
+		
+		connBuff->serializeShortLE( msgLength );
+		
+		for( int i = 0; i < msgLength; i++ )
+		{
+			connBuff->serializeChar( message.at( i ) );
+		}		
+
+	}//!Block for local variables
+		break;	// case CREATE_ROOM	
+
 	case JOIN_ROOM:
 	{
 		// User name length:
@@ -202,7 +246,7 @@ void cConnection::sendMessage( InitInfo info, char msgID, string message )
 		}
 
 	}//!Block for local variables
-		break;	// case JOIN_ROOM	
+	break;	// case JOIN_ROOM	
 
 	case LEAVE_ROOM:
 	{

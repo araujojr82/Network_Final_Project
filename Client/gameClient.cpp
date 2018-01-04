@@ -96,6 +96,13 @@ int main()
 	string chatBuffer;              // Stores all the received messages
 	vector<string> connectedRooms;  // Stores the connected rooms locally
 
+	// TODO Ask the server for the lobby options and store them in a structure
+	//( Map Names, Game Modes, Max Number of Players )
+	// Vector of Map Names
+	// map1, map2, map3
+	// Vector of Game Modes
+	// FREE_FOR_ALL, DUEL, TEAM
+	// Integer Max number of players
 
 	// Main chat loop
 	while( myConn.m_isAlive )
@@ -297,12 +304,13 @@ int readCase( string& myMessage, InitInfo& user, vector<string>& connectedRooms,
 		}
 
 		cout << "Those are the available commands:\n"
-			<< "-new   | Creates a new user\n"
-			<< "-auth  | Starts the authentication process for a user;\n"
-			<< "-list  | List the lobbys availables on the Server ;\n"
-			<< "-join  | Joins a lobby in the Game Server;\n"
-			<< "-leave | Leaves a specific lobby from the Game Server;\n"
-			<< "-exit  | Exit the client application.\n"
+			<< "-new    : Creates a new user\n"
+			<< "-auth   : Starts the authentication process for a user;\n"
+			<< "-list   : List the lobbies availables on the Server ;\n"
+			<< "-create : Creates a lobby in the Game Server ;\n"
+			<< "-join   : Joins a lobby in the Game Server;\n"
+			<< "-leave  : Leaves a specific lobby from the Game Server;\n"
+			<< "-exit   : Exit the client application.\n"
 			<< "================================================================================\n"
 			<< PROMPT;
 
@@ -359,6 +367,37 @@ int readCase( string& myMessage, InitInfo& user, vector<string>& connectedRooms,
 		}
 		user.password = answer;
 		myConn.sendMessage( user, AUTHENTICATE, "" );
+	}
+
+	// JOIN a room
+	if( myMessage == "-create" )
+	{
+		string mapName, lobbyName, gameMode, totalSpots;
+		myMessage = "";
+		cout << "Please type in the name of the room\n";
+		cout << PROMPT;
+		cin >> lobbyName;
+		//user.room = lobbyName;
+		cout << "Select Map ( Type in the number )\n";
+		cout << PROMPT;
+		cin >> mapName;
+		cout << "Select Game Mode ( Type in the number )\n";
+		cout << PROMPT;
+		cin >> gameMode;
+		cout << "Choose Max number of players ( MAX: 10 )\n";
+		cout << PROMPT;
+		cin >> totalSpots;
+
+		string lobbyInfo = mapName + "," + lobbyName + "," + gameMode + "," + totalSpots;
+		
+		////newLobby.mapName = "map3";
+		////newLobby.lobbyName = "lobby3";
+		////newLobby.gameMode = gameModes::TEAM;
+		////newLobby.openSpots = 1;
+		////newLobby.totalSpots = 6;
+		////newLobby.hostName = "Newbie";
+
+		myConn.sendMessage( user, CREATE_ROOM, lobbyInfo );
 	}
 
 	// JOIN a room
