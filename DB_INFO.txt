@@ -1,0 +1,7 @@
+hard coded connection information
+Port: 3306
+user: root
+password:fanshawe
+
+File for the configuration:
+/Authentication_Server/cDataBase.cpp

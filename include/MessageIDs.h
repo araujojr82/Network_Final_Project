@@ -1,0 +1,24 @@
+#ifndef _MSG_IDS_HG_
+#define _MSG_IDS_HG_
+
+// The message IDs to be used throughout the solution
+enum messageIDs 
+{
+	CREATE_ROOM = 0,
+    JOIN_ROOM = 1,
+    LEAVE_ROOM,
+    SEND_TEXT,
+    CREATE_ACCOUNT,
+    AUTHENTICATE,
+    VALIDATE_SERVER,
+    CREATE_ACCOUNT_WEB,
+    CREATE_ACCOUNT_WEB_SUCCESS,
+    CREATE_ACCOUNT_WEB_FAILURE,
+    AUTHENTICATE_WEB,
+    AUTHENTICATE_WEB_SUCCESS,
+    AUTHENTICATE_WEB_FAILURE,
+	LIST_LOBBY,
+	GET_LOBBY_NUM
+};
+
+#endif // !_MSG_IDS_HG_
