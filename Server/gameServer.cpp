@@ -466,14 +466,27 @@ void readSocket( LPSOCKET_INFORMATION sa )
 	}
 }
 
-bool FindLobbyByName( string roomName, Lobby* theLobby )
+Lobby* FindLobbyByName( string roomName )
 {
 	// Look in the Lobby Vector for a lobby with this name
 	for( int i = 0; i != g_vecServerLobbies.size(); i++ )
 	{
 		if( g_vecServerLobbies[i]->lobbyName == roomName )
 		{
-			theLobby = g_vecServerLobbies[i];
+			return g_vecServerLobbies[i];
+		}
+	}
+	return NULL;
+}
+
+bool DeleteLobbyByName( string roomName )
+{
+	// Look in the Lobby Vector for a lobby with this name
+	for( int i = 0; i != g_vecServerLobbies.size(); i++ )
+	{
+		if( g_vecServerLobbies[i]->lobbyName == roomName )
+		{
+			g_vecServerLobbies.erase( g_vecServerLobbies.begin() + i );
 			return true;
 		}
 	}
@@ -583,9 +596,9 @@ void treatMessage( LPSOCKET_INFORMATION sa, string msg )
 			newLobby->openSpots = newLobby->totalSpots - 1;
 
 			// Look in the Lobby Vector for a lobby with this name
-			bIsDuplicated = FindLobbyByName( newLobby->lobbyName, newLobby );
+			Lobby* theLobby = FindLobbyByName( newLobby->lobbyName );
 
-			if( bIsDuplicated )
+			if( theLobby != NULL )
 			{	// Lobby already exists, send msg to the client
 				sendMsg( sa, "The lobby name already exists on this server!", "Chat Server" );
 			}
@@ -619,10 +632,9 @@ void treatMessage( LPSOCKET_INFORMATION sa, string msg )
 				roomName.push_back( buff.deserializeChar() );
 			}
 
-			Lobby* theLobby = new Lobby();
-			bLobbyFound = FindLobbyByName( roomName, theLobby );
+			Lobby* theLobby = FindLobbyByName( roomName );
 
-			if( bLobbyFound )
+			if( theLobby != NULL )
 			{
 				// Does the lobby have any available spots
 				if( theLobby->openSpots >= 1 )
@@ -671,13 +683,20 @@ void treatMessage( LPSOCKET_INFORMATION sa, string msg )
 		for( short i = 0; i < roomNameLength; i++ )
 			roomName.push_back( buff.deserializeChar() );
 
-		Lobby *theLobby = new Lobby();
-
 		// Look in the Lobby Vector for a lobby with this name
-		bLobbyFound = FindLobbyByName( roomName, theLobby );
+		Lobby *theLobby = FindLobbyByName( roomName );
 
-		if( bLobbyFound )
-		{
+		if( theLobby != NULL )
+		{	// Found the lobby
+			if( theLobby->hostName == sa->m_userName )
+			{
+				DeleteLobbyByName( theLobby->lobbyName );
+			}
+			else
+			{
+				theLobby->openSpots++;
+			}
+
 			// Erase the room from the vector and send the apropriated messages
 			for( int i = 0; i < sa->m_rooms.size(); i++ )
 				if( roomName == sa->m_rooms[i] )
@@ -687,8 +706,8 @@ void treatMessage( LPSOCKET_INFORMATION sa, string msg )
 			msgToRoom( sa, roomName, " has disconnected from ", "Chat Server" );
 		}
 		else
-		{
-
+		{ // Lobby doesnt exist, inform client
+			sendMsg( sa, "This lobby name doesn't exists on this server!", "Chat Server" );
 		}
 
 	} // LEAVE_ROOM local scope
