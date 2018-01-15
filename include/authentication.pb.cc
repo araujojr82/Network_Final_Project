@@ -85,7 +85,7 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_ATTRIBUTE_SECTION
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CreateAccountWeb, requestid_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CreateAccountWeb, email_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CreateAccountWeb, username_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CreateAccountWeb, plaintextpassword_),
   ~0u,  // no _has_bits_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CreateAccountWebSuccess, _internal_metadata_),
@@ -107,7 +107,7 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_ATTRIBUTE_SECTION
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(AuthenticateWeb, requestid_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(AuthenticateWeb, email_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(AuthenticateWeb, username_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(AuthenticateWeb, plaintextpassword_),
   ~0u,  // no _has_bits_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(AuthenticateWebSuccess, _internal_metadata_),
@@ -193,7 +193,7 @@ void AddDescriptorsImpl() {
   static const char descriptor[] GOOGLE_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
       "\n\024authentication.proto\022\016authentication\"O"
       "\n\020CreateAccountWeb\022\021\n\trequestId\030\001 \001(\022\022\r\n"
-      "\005email\030\002 \001(\t\022\031\n\021plaintextPassword\030\003 \001(\t\""
+      "\005username\030\002 \001(\t\022\031\n\021plaintextPassword\030\003 \001(\t\""
       "<\n\027CreateAccountWebSuccess\022\021\n\trequestId\030"
       "\001 \001(\022\022\016\n\006userId\030\002 \001(\022\"\307\001\n\027CreateAccountW"
       "ebFailure\022\021\n\trequestId\030\001 \001(\022\022B\n\ntheRease"
@@ -201,7 +201,7 @@ void AddDescriptorsImpl() {
       "ebFailure.reason\"U\n\006reason\022\032\n\026ACCOUNT_AL"
       "READY_EXISTS\020\000\022\024\n\020INVALID_PASSWORD\020\001\022\031\n\025"
       "INTERNAL_SERVER_ERROR\020\002\"N\n\017AuthenticateW"
-      "eb\022\021\n\trequestId\030\001 \001(\022\022\r\n\005email\030\002 \001(\t\022\031\n\021"
+      "eb\022\021\n\trequestId\030\001 \001(\022\022\r\n\005username\030\002 \001(\t\022\031\n\021"
       "plaintextPassword\030\003 \001(\t\"Q\n\026AuthenticateW"
       "ebSuccess\022\021\n\trequestId\030\001 \001(\022\022\016\n\006userId\030\002"
       " \001(\022\022\024\n\014creationDate\030\003 \001(\t\"\254\001\n\026Authentic"
@@ -280,7 +280,7 @@ const int AuthenticateWebFailure::reason_ARRAYSIZE;
 
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
 const int CreateAccountWeb::kRequestIdFieldNumber;
-const int CreateAccountWeb::kEmailFieldNumber;
+const int CreateAccountWeb::kUsernameFieldNumber;
 const int CreateAccountWeb::kPlaintextPasswordFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
@@ -297,9 +297,9 @@ CreateAccountWeb::CreateAccountWeb(const CreateAccountWeb& from)
       _internal_metadata_(NULL),
       _cached_size_(0) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  email_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.email().size() > 0) {
-    email_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.email_);
+  username_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.username().size() > 0) {
+    username_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.username_);
   }
   plaintextpassword_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   if (from.plaintextpassword().size() > 0) {
@@ -310,7 +310,7 @@ CreateAccountWeb::CreateAccountWeb(const CreateAccountWeb& from)
 }
 
 void CreateAccountWeb::SharedCtor() {
-  email_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  username_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   plaintextpassword_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   requestid_ = GOOGLE_LONGLONG(0);
   _cached_size_ = 0;
@@ -322,7 +322,7 @@ CreateAccountWeb::~CreateAccountWeb() {
 }
 
 void CreateAccountWeb::SharedDtor() {
-  email_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  username_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   plaintextpassword_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 
@@ -355,7 +355,7 @@ void CreateAccountWeb::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  email_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  username_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   plaintextpassword_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   requestid_ = GOOGLE_LONGLONG(0);
   _internal_metadata_.Clear();
@@ -385,16 +385,16 @@ bool CreateAccountWeb::MergePartialFromCodedStream(
         break;
       }
 
-      // string email = 2;
+      // string username = 2;
       case 2: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(18u /* 18 & 0xFF */)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_email()));
+                input, this->mutable_username()));
           DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            this->email().data(), static_cast<int>(this->email().length()),
+            this->username().data(), static_cast<int>(this->username().length()),
             ::google::protobuf::internal::WireFormatLite::PARSE,
-            "authentication.CreateAccountWeb.email"));
+            "authentication.CreateAccountWeb.username"));
         } else {
           goto handle_unusual;
         }
@@ -448,14 +448,14 @@ void CreateAccountWeb::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteSInt64(1, this->requestid(), output);
   }
 
-  // string email = 2;
-  if (this->email().size() > 0) {
+  // string username = 2;
+  if (this->username().size() > 0) {
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->email().data(), static_cast<int>(this->email().length()),
+      this->username().data(), static_cast<int>(this->username().length()),
       ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "authentication.CreateAccountWeb.email");
+      "authentication.CreateAccountWeb.username");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      2, this->email(), output);
+      2, this->username(), output);
   }
 
   // string plaintextPassword = 3;
@@ -487,15 +487,15 @@ void CreateAccountWeb::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteSInt64ToArray(1, this->requestid(), target);
   }
 
-  // string email = 2;
-  if (this->email().size() > 0) {
+  // string username = 2;
+  if (this->username().size() > 0) {
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->email().data(), static_cast<int>(this->email().length()),
+      this->username().data(), static_cast<int>(this->username().length()),
       ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "authentication.CreateAccountWeb.email");
+      "authentication.CreateAccountWeb.username");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        2, this->email(), target);
+        2, this->username(), target);
   }
 
   // string plaintextPassword = 3;
@@ -526,11 +526,11 @@ size_t CreateAccountWeb::ByteSizeLong() const {
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
   }
-  // string email = 2;
-  if (this->email().size() > 0) {
+  // string username = 2;
+  if (this->username().size() > 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::StringSize(
-        this->email());
+        this->username());
   }
 
   // string plaintextPassword = 3;
@@ -576,9 +576,9 @@ void CreateAccountWeb::MergeFrom(const CreateAccountWeb& from) {
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from.email().size() > 0) {
+  if (from.username().size() > 0) {
 
-    email_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.email_);
+    username_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.username_);
   }
   if (from.plaintextpassword().size() > 0) {
 
@@ -613,7 +613,7 @@ void CreateAccountWeb::Swap(CreateAccountWeb* other) {
 }
 void CreateAccountWeb::InternalSwap(CreateAccountWeb* other) {
   using std::swap;
-  email_.Swap(&other->email_);
+  username_.Swap(&other->username_);
   plaintextpassword_.Swap(&other->plaintextpassword_);
   swap(requestid_, other->requestid_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
@@ -642,57 +642,57 @@ void CreateAccountWeb::set_requestid(::google::protobuf::int64 value) {
   // @@protoc_insertion_point(field_set:authentication.CreateAccountWeb.requestId)
 }
 
-// string email = 2;
-void CreateAccountWeb::clear_email() {
-  email_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+// string username = 2;
+void CreateAccountWeb::clear_username() {
+  username_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-const ::std::string& CreateAccountWeb::email() const {
-  // @@protoc_insertion_point(field_get:authentication.CreateAccountWeb.email)
-  return email_.GetNoArena();
+const ::std::string& CreateAccountWeb::username() const {
+  // @@protoc_insertion_point(field_get:authentication.CreateAccountWeb.username)
+  return username_.GetNoArena();
 }
-void CreateAccountWeb::set_email(const ::std::string& value) {
+void CreateAccountWeb::set_username(const ::std::string& value) {
   
-  email_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:authentication.CreateAccountWeb.email)
+  username_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:authentication.CreateAccountWeb.username)
 }
 #if LANG_CXX11
-void CreateAccountWeb::set_email(::std::string&& value) {
+void CreateAccountWeb::set_username(::std::string&& value) {
   
-  email_.SetNoArena(
+  username_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:authentication.CreateAccountWeb.email)
+  // @@protoc_insertion_point(field_set_rvalue:authentication.CreateAccountWeb.username)
 }
 #endif
-void CreateAccountWeb::set_email(const char* value) {
+void CreateAccountWeb::set_username(const char* value) {
   GOOGLE_DCHECK(value != NULL);
   
-  email_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:authentication.CreateAccountWeb.email)
+  username_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:authentication.CreateAccountWeb.username)
 }
-void CreateAccountWeb::set_email(const char* value, size_t size) {
+void CreateAccountWeb::set_username(const char* value, size_t size) {
   
-  email_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+  username_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:authentication.CreateAccountWeb.email)
+  // @@protoc_insertion_point(field_set_pointer:authentication.CreateAccountWeb.username)
 }
-::std::string* CreateAccountWeb::mutable_email() {
+::std::string* CreateAccountWeb::mutable_username() {
   
-  // @@protoc_insertion_point(field_mutable:authentication.CreateAccountWeb.email)
-  return email_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  // @@protoc_insertion_point(field_mutable:authentication.CreateAccountWeb.username)
+  return username_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-::std::string* CreateAccountWeb::release_email() {
-  // @@protoc_insertion_point(field_release:authentication.CreateAccountWeb.email)
+::std::string* CreateAccountWeb::release_username() {
+  // @@protoc_insertion_point(field_release:authentication.CreateAccountWeb.username)
   
-  return email_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  return username_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-void CreateAccountWeb::set_allocated_email(::std::string* email) {
-  if (email != NULL) {
+void CreateAccountWeb::set_allocated_username(::std::string* username) {
+  if (username != NULL) {
     
   } else {
     
   }
-  email_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), email);
-  // @@protoc_insertion_point(field_set_allocated:authentication.CreateAccountWeb.email)
+  username_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), username);
+  // @@protoc_insertion_point(field_set_allocated:authentication.CreateAccountWeb.username)
 }
 
 // string plaintextPassword = 3;
@@ -1376,7 +1376,7 @@ void CreateAccountWebFailure::set_thereaseon(::authentication::CreateAccountWebF
 
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
 const int AuthenticateWeb::kRequestIdFieldNumber;
-const int AuthenticateWeb::kEmailFieldNumber;
+const int AuthenticateWeb::kUsernameFieldNumber;
 const int AuthenticateWeb::kPlaintextPasswordFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
@@ -1393,9 +1393,9 @@ AuthenticateWeb::AuthenticateWeb(const AuthenticateWeb& from)
       _internal_metadata_(NULL),
       _cached_size_(0) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  email_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.email().size() > 0) {
-    email_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.email_);
+  username_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.username().size() > 0) {
+    username_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.username_);
   }
   plaintextpassword_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   if (from.plaintextpassword().size() > 0) {
@@ -1406,7 +1406,7 @@ AuthenticateWeb::AuthenticateWeb(const AuthenticateWeb& from)
 }
 
 void AuthenticateWeb::SharedCtor() {
-  email_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  username_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   plaintextpassword_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   requestid_ = GOOGLE_LONGLONG(0);
   _cached_size_ = 0;
@@ -1418,7 +1418,7 @@ AuthenticateWeb::~AuthenticateWeb() {
 }
 
 void AuthenticateWeb::SharedDtor() {
-  email_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  username_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   plaintextpassword_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 
@@ -1451,7 +1451,7 @@ void AuthenticateWeb::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  email_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  username_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   plaintextpassword_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   requestid_ = GOOGLE_LONGLONG(0);
   _internal_metadata_.Clear();
@@ -1481,16 +1481,16 @@ bool AuthenticateWeb::MergePartialFromCodedStream(
         break;
       }
 
-      // string email = 2;
+      // string username = 2;
       case 2: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(18u /* 18 & 0xFF */)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_email()));
+                input, this->mutable_username()));
           DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            this->email().data(), static_cast<int>(this->email().length()),
+            this->username().data(), static_cast<int>(this->username().length()),
             ::google::protobuf::internal::WireFormatLite::PARSE,
-            "authentication.AuthenticateWeb.email"));
+            "authentication.AuthenticateWeb.username"));
         } else {
           goto handle_unusual;
         }
@@ -1544,14 +1544,14 @@ void AuthenticateWeb::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteSInt64(1, this->requestid(), output);
   }
 
-  // string email = 2;
-  if (this->email().size() > 0) {
+  // string username = 2;
+  if (this->username().size() > 0) {
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->email().data(), static_cast<int>(this->email().length()),
+      this->username().data(), static_cast<int>(this->username().length()),
       ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "authentication.AuthenticateWeb.email");
+      "authentication.AuthenticateWeb.username");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      2, this->email(), output);
+      2, this->username(), output);
   }
 
   // string plaintextPassword = 3;
@@ -1583,15 +1583,15 @@ void AuthenticateWeb::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteSInt64ToArray(1, this->requestid(), target);
   }
 
-  // string email = 2;
-  if (this->email().size() > 0) {
+  // string username = 2;
+  if (this->username().size() > 0) {
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->email().data(), static_cast<int>(this->email().length()),
+      this->username().data(), static_cast<int>(this->username().length()),
       ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "authentication.AuthenticateWeb.email");
+      "authentication.AuthenticateWeb.username");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        2, this->email(), target);
+        2, this->username(), target);
   }
 
   // string plaintextPassword = 3;
@@ -1622,11 +1622,11 @@ size_t AuthenticateWeb::ByteSizeLong() const {
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
   }
-  // string email = 2;
-  if (this->email().size() > 0) {
+  // string username = 2;
+  if (this->username().size() > 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::StringSize(
-        this->email());
+        this->username());
   }
 
   // string plaintextPassword = 3;
@@ -1672,9 +1672,9 @@ void AuthenticateWeb::MergeFrom(const AuthenticateWeb& from) {
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from.email().size() > 0) {
+  if (from.username().size() > 0) {
 
-    email_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.email_);
+    username_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.username_);
   }
   if (from.plaintextpassword().size() > 0) {
 
@@ -1709,7 +1709,7 @@ void AuthenticateWeb::Swap(AuthenticateWeb* other) {
 }
 void AuthenticateWeb::InternalSwap(AuthenticateWeb* other) {
   using std::swap;
-  email_.Swap(&other->email_);
+  username_.Swap(&other->username_);
   plaintextpassword_.Swap(&other->plaintextpassword_);
   swap(requestid_, other->requestid_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
@@ -1738,57 +1738,57 @@ void AuthenticateWeb::set_requestid(::google::protobuf::int64 value) {
   // @@protoc_insertion_point(field_set:authentication.AuthenticateWeb.requestId)
 }
 
-// string email = 2;
-void AuthenticateWeb::clear_email() {
-  email_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+// string username = 2;
+void AuthenticateWeb::clear_username() {
+  username_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-const ::std::string& AuthenticateWeb::email() const {
-  // @@protoc_insertion_point(field_get:authentication.AuthenticateWeb.email)
-  return email_.GetNoArena();
+const ::std::string& AuthenticateWeb::username() const {
+  // @@protoc_insertion_point(field_get:authentication.AuthenticateWeb.username)
+  return username_.GetNoArena();
 }
-void AuthenticateWeb::set_email(const ::std::string& value) {
+void AuthenticateWeb::set_username(const ::std::string& value) {
   
-  email_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:authentication.AuthenticateWeb.email)
+  username_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:authentication.AuthenticateWeb.username)
 }
 #if LANG_CXX11
-void AuthenticateWeb::set_email(::std::string&& value) {
+void AuthenticateWeb::set_username(::std::string&& value) {
   
-  email_.SetNoArena(
+  username_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:authentication.AuthenticateWeb.email)
+  // @@protoc_insertion_point(field_set_rvalue:authentication.AuthenticateWeb.username)
 }
 #endif
-void AuthenticateWeb::set_email(const char* value) {
+void AuthenticateWeb::set_username(const char* value) {
   GOOGLE_DCHECK(value != NULL);
   
-  email_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:authentication.AuthenticateWeb.email)
+  username_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:authentication.AuthenticateWeb.username)
 }
-void AuthenticateWeb::set_email(const char* value, size_t size) {
+void AuthenticateWeb::set_username(const char* value, size_t size) {
   
-  email_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+  username_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:authentication.AuthenticateWeb.email)
+  // @@protoc_insertion_point(field_set_pointer:authentication.AuthenticateWeb.username)
 }
-::std::string* AuthenticateWeb::mutable_email() {
+::std::string* AuthenticateWeb::mutable_username() {
   
-  // @@protoc_insertion_point(field_mutable:authentication.AuthenticateWeb.email)
-  return email_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  // @@protoc_insertion_point(field_mutable:authentication.AuthenticateWeb.username)
+  return username_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-::std::string* AuthenticateWeb::release_email() {
-  // @@protoc_insertion_point(field_release:authentication.AuthenticateWeb.email)
+::std::string* AuthenticateWeb::release_username() {
+  // @@protoc_insertion_point(field_release:authentication.AuthenticateWeb.username)
   
-  return email_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  return username_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-void AuthenticateWeb::set_allocated_email(::std::string* email) {
-  if (email != NULL) {
+void AuthenticateWeb::set_allocated_username(::std::string* username) {
+  if (username != NULL) {
     
   } else {
     
   }
-  email_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), email);
-  // @@protoc_insertion_point(field_set_allocated:authentication.AuthenticateWeb.email)
+  username_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), username);
+  // @@protoc_insertion_point(field_set_allocated:authentication.AuthenticateWeb.username)
 }
 
 // string plaintextPassword = 3;

@@ -7,7 +7,7 @@ struct InitInfo
     char* serverAddr;       // The server address
     std::string room;       // The room to be connected
     std::string username;
-    std::string email;
+    //std::string email;
     std::string password;
 };
 

@@ -310,14 +310,14 @@ void cConnection::sendMessage( InitInfo info, char msgID, string message )
 
 	case CREATE_ACCOUNT:
 	{
-		// Email length:
-		char emailLength = info.email.size();
+		// username length:
+		char usernameLength = info.username.size();
 
 		// Password length:
 		char passwordLength = info.password.size();
 
-		//                Packet        MSG_ID         EMAIL SIZE      EMAIL        PWD SIZE        PASSWORD
-		packetLength = sizeof( int ) + sizeof( char ) + sizeof( char ) + emailLength + sizeof( char ) + passwordLength;
+		//                Packet        MSG_ID         username SIZE      username        PWD SIZE        PASSWORD
+		packetLength = sizeof( int ) + sizeof( char ) + sizeof( char ) + usernameLength + sizeof( char ) + passwordLength;
 
 		// Check if the packet is too big
 		if( packetLength > 519 )
@@ -332,10 +332,10 @@ void cConnection::sendMessage( InitInfo info, char msgID, string message )
 		connBuff->serializeIntLE( packetLength );
 		connBuff->serializeChar( CREATE_ACCOUNT );
 
-		connBuff->serializeChar( emailLength );
-		for( int i = 0; i < emailLength; i++ )
+		connBuff->serializeChar( usernameLength );
+		for( int i = 0; i < usernameLength; i++ )
 		{
-			connBuff->serializeChar( info.email[i] );
+			connBuff->serializeChar( info.username[i] );
 		}
 
 		connBuff->serializeChar( passwordLength );
@@ -349,14 +349,14 @@ void cConnection::sendMessage( InitInfo info, char msgID, string message )
 
 	case AUTHENTICATE:
 	{
-		// Email length:
-		char emailLength = info.email.size();
+		// username length:
+		char usernameLength = info.username.size();
 
 		// Password length:
 		char passwordLength = info.password.size();
 
-		//                Packet        MSG_ID         EMAIL SIZE      EMAIL        PWD SIZE        PASSWORD
-		packetLength = sizeof( int ) + sizeof( char ) + sizeof( char ) + emailLength + sizeof( char ) + passwordLength;
+		//                Packet        MSG_ID         username SIZE      username        PWD SIZE        PASSWORD
+		packetLength = sizeof( int ) + sizeof( char ) + sizeof( char ) + usernameLength + sizeof( char ) + passwordLength;
 
 		// Check if the packet is too big
 		if( packetLength > 519 ) 
@@ -371,10 +371,10 @@ void cConnection::sendMessage( InitInfo info, char msgID, string message )
 		connBuff->serializeIntLE( packetLength );
 		connBuff->serializeChar( AUTHENTICATE );
 
-		connBuff->serializeChar( emailLength );
-		for( int i = 0; i < emailLength; i++ )
+		connBuff->serializeChar( usernameLength );
+		for( int i = 0; i < usernameLength; i++ )
 		{
-			connBuff->serializeChar( info.email[i] );
+			connBuff->serializeChar( info.username[i] );
 		}
 
 		connBuff->serializeChar( passwordLength );

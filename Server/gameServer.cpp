@@ -743,10 +743,10 @@ void treatMessage( LPSOCKET_INFORMATION sa, string msg )
 
 	case CREATE_ACCOUNT: 
 	{
-		string email;
-		char emailLength = buff.deserializeChar();
-		for( short i = 0; i < emailLength; i++ )
-			email.push_back( buff.deserializeChar() );
+		string username;
+		char usernameLength = buff.deserializeChar();
+		for( short i = 0; i < usernameLength; i++ )
+			username.push_back( buff.deserializeChar() );
 
 		string password;
 		char passwordLength = buff.deserializeChar();
@@ -758,7 +758,7 @@ void treatMessage( LPSOCKET_INFORMATION sa, string msg )
 		g_requestedID++;
 		sa->m_requestedID = g_requestedID;
 		caw.set_requestid( g_requestedID );
-		caw.set_email( email );
+		caw.set_username( username );
 		caw.set_plaintextpassword( password );
 
 		string pbStr;
@@ -784,10 +784,10 @@ void treatMessage( LPSOCKET_INFORMATION sa, string msg )
 
 	case AUTHENTICATE: 
 	{
-		string email;
-		char emailLength = buff.deserializeChar();
-		for( short i = 0; i < emailLength; i++ )
-			email.push_back( buff.deserializeChar() );
+		string username;
+		char usernameLength = buff.deserializeChar();
+		for( short i = 0; i < usernameLength; i++ )
+			username.push_back( buff.deserializeChar() );
 
 		string password;
 		char passwordLength = buff.deserializeChar();
@@ -799,7 +799,7 @@ void treatMessage( LPSOCKET_INFORMATION sa, string msg )
 		g_requestedID++;
 		sa->m_requestedID = g_requestedID;
 		aw.set_requestid( g_requestedID );
-		aw.set_email( email );
+		aw.set_username( username );
 		aw.set_plaintextpassword( password );
 
 		string pbStr;

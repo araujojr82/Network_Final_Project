@@ -5,20 +5,20 @@
 
 cDataBase dataBase;
 
-long long cUserManager::createUserAccount( std::string email, std::string password )
+long long cUserManager::createUserAccount( std::string username, std::string password )
 {
 	std::string salt;
 	generateSalt( salt );
 	std::string hashedPassord = sha256( password + salt );
 
-	return dataBase.insertUser( email, hashedPassord, salt );
+	return dataBase.insertUser( username, hashedPassord, salt );
 }
 
-long long cUserManager::authenticateAccount( std::string email, std::string password, std::string &creationDate )
+long long cUserManager::authenticateAccount( std::string username, std::string password )
 {
 	std::string dbHashedPassord;
 	std::string dbSalt;
-	long long result = dataBase.selectUser( email, dbHashedPassord, dbSalt, creationDate );
+	long long result = dataBase.selectUser( username, dbHashedPassord, dbSalt );
 
 	if( result > 0 )
 	{

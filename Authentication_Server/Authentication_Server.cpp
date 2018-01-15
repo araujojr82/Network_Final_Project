@@ -105,7 +105,7 @@ int main()
 				authentication::CreateAccountWeb caw;
 				caw.ParseFromString( pbStr );
 
-				long long result = g_userManager.createUserAccount( caw.email(), caw.plaintextpassword() );
+				long long result = g_userManager.createUserAccount( caw.username(), caw.plaintextpassword() );
 
 				if( result != -1 )
 				{
@@ -136,7 +136,7 @@ int main()
 				aw.ParseFromString( pbStr );
 
 				string mCreationDate;
-				long long result = g_userManager.authenticateAccount( aw.email(), aw.plaintextpassword(), mCreationDate );
+				long long result = g_userManager.authenticateAccount( aw.username(), aw.plaintextpassword() );
 				if( result > 0 ) 
 				{
 					// The user was authenticated

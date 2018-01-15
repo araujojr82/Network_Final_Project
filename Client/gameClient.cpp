@@ -328,12 +328,12 @@ int readCase( string& myMessage, InitInfo& user, vector<string>& connectedRooms,
 	// NEW user
 	if( myMessage == "-new" )
 	{
-		myMessage = "";
-		cout << "Please type in your email\n";
-		cout << PROMPT;
 		string answer;
-		cin >> answer;
-		user.email = answer;
+		myMessage = "";
+		//cout << "Please type in your email\n";
+		//cout << PROMPT;
+		//cin >> answer;
+		//user.email = answer;
 		cout << "Please type in your password\n";
 		cout << PROMPT;
 		cin >> answer;
@@ -350,12 +350,12 @@ int readCase( string& myMessage, InitInfo& user, vector<string>& connectedRooms,
 	// AUTHENTICATION
 	if( myMessage == "-auth" )
 	{
-		myMessage = "";
-		cout << "Please type in your email\n";
-		cout << PROMPT;
 		string answer;
-		cin >> answer;
-		user.email = answer;
+		myMessage = "";
+		//cout << "Please type in your email\n";
+		//cout << PROMPT;
+		//cin >> answer;
+		//user.email = answer;
 		cout << "Please type in your password\n";
 		cout << PROMPT;
 		cin >> answer;

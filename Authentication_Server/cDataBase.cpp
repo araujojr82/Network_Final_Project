@@ -3,22 +3,19 @@
 
 struct UserInfo
 {
-	long long authId = -1;
-	long long userId = -1;
-	std::string email;
-	std::string hashedPassword;
+	long long id = -1;
+	std::string username;
 	std::string salt;
-	std::string lastLogin;
-	std::string creationDate;
+	std::string password;
+	std::string last_login;
 };
 
 std::vector<UserInfo> user;
-long long gAuthId = 0;
-long long  gUserId = 0;
+long long gId = 0;
 
-bool findEmail( std::string email )
+bool findUsername( std::string username )
 {
-	string resultEmail, queryAsString;
+	string resultUsername, queryAsString;
 
 	try {
 		sql::Driver *driver;
@@ -31,16 +28,16 @@ bool findEmail( std::string email )
 		con = driver->connect( "tcp://localhost:3306", "root", "fanshawe" );
 
 		/* Connect to the MySQL database */
-		con->setSchema( "info-6016" );
+		con->setSchema( "lobbyster" );
 
 		stmt = con->createStatement();
 
-		queryAsString = "SELECT email FROM web_auth WHERE email = '" + email + "'";
+		queryAsString = "SELECT username FROM accounts WHERE username = '" + username + "'";
 		res = stmt->executeQuery( queryAsString.c_str() );
 
 		while( res->next() )
 		{
-			resultEmail = res->getString( "email" );
+			resultUsername = res->getString( "username" );
 		}
 
 		delete res;
@@ -58,7 +55,7 @@ bool findEmail( std::string email )
 		return false;
 	}
 
-	if( resultEmail == email )
+	if( resultUsername == username )
 	{
 		return true;
 	}
@@ -66,10 +63,10 @@ bool findEmail( std::string email )
 	return false;
 }
 
-long long cDataBase::insertUser( std::string email, std::string hashedPassword, std::string salt )
+long long cDataBase::insertUser( std::string username, std::string password, std::string salt )
 {
 
-	if( findEmail( email ) )
+	if( findUsername( username ) )
 	{
 		// The user already exists
 		return -1;
@@ -86,17 +83,16 @@ long long cDataBase::insertUser( std::string email, std::string hashedPassword, 
 		con = driver->connect( "tcp://localhost:3306", "root", "fanshawe" );
 
 		/* Connect to the MySQL database */
-		con->setSchema( "info-6016" );
+		con->setSchema( "lobbyster" );
 
-		prep_stmt = con->prepareStatement( "INSERT INTO web_auth( email, salt, hashed_password, userId ) VALUES( ? , ? , ? , ? )" );
-		prep_stmt->setString( 1, email );	//email, 
-		prep_stmt->setString( 2, salt );	//salt
-		prep_stmt->setString( 3, hashedPassword ); //hashed_password
-		prep_stmt->setInt( 4, ++gUserId );		//userId
+		prep_stmt = con->prepareStatement( "INSERT INTO accounts( username, salt, password, last_login ) VALUES( ? , ? , ? , CURRENT_TIMESTAMP )" );
+		prep_stmt->setString( 1, username );
+		prep_stmt->setString( 2, salt );
+		prep_stmt->setString( 3, password );
 		prep_stmt->execute();
 
-		prep_stmt = con->prepareStatement( "INSERT INTO user( last_login, creation_date )  VALUES( CURRENT_TIMESTAMP , CURRENT_TIMESTAMP )" );
-		prep_stmt->execute();
+		//prep_stmt = con->prepareStatement( "INSERT INTO user( last_login, creation_date )  VALUES( CURRENT_TIMESTAMP , CURRENT_TIMESTAMP )" );
+		//prep_stmt->execute();
 
 		delete prep_stmt;
 		delete con;
@@ -112,19 +108,16 @@ long long cDataBase::insertUser( std::string email, std::string hashedPassword, 
 	}
 
 	UserInfo thisUser;
-	thisUser.authId = ++gAuthId;
-	thisUser.userId = ++gUserId;
-	thisUser.email = email;
-	thisUser.hashedPassword = hashedPassword;
+	thisUser.id = ++gId;
+	thisUser.password = password;
 	thisUser.salt = salt;
-	thisUser.creationDate = "Some date";
-	thisUser.lastLogin = "Some date";
+	thisUser.last_login = "Some date";
 	user.push_back( thisUser );
-	return thisUser.userId;
+	return thisUser.id;
 
 }
 
-long long cDataBase::selectUser( std::string email, std::string &hashedPassword, std::string &salt, std::string &creationDate )
+long long cDataBase::selectUser( std::string username, std::string &password, std::string &salt )
 {
 	try
 	{
@@ -141,48 +134,49 @@ long long cDataBase::selectUser( std::string email, std::string &hashedPassword,
 		con = driver->connect( "tcp://localhost:3306", "root", "fanshawe" );
 
 		/* Connect to the MySQL database */
-		con->setSchema( "info-6016" );
+		con->setSchema( "lobbyster" );
 
 		stmt = con->createStatement();
 
-		queryAsString = "SELECT id, email, salt, hashed_password, userId FROM web_auth WHERE email = '" + email + "'";
+		queryAsString = "SELECT id, username, salt, password, last_login FROM accounts WHERE username = '" + username + "'";
 		res = stmt->executeQuery( queryAsString.c_str() );
 		while( res->next() )
 		{
-			thisUser.authId = res->getInt( "id" );
-			thisUser.userId = res->getInt( "userId" );
-			thisUser.email = res->getString( "email" );
-			thisUser.hashedPassword = res->getString( "hashed_password" );
+			thisUser.id = res->getInt( "id" );
+			thisUser.username = res->getInt( "username" );
 			thisUser.salt = res->getString( "salt" );
+			thisUser.password = res->getString( "password" );
+			thisUser.last_login = res->getString( "last_login" );
+			
 		}
 
-		if( thisUser.email == email )
+		if( thisUser.username == username )
 		{
-			userIdAsString = std::to_string( thisUser.userId );
-			queryAsString = "SELECT last_login, creation_date FROM user WHERE id = '" + userIdAsString + "'";
-			res = stmt->executeQuery( queryAsString.c_str() );
-			while( res->next() )
-			{
-				thisUser.creationDate = res->getString( "creation_date" );
-				thisUser.lastLogin = res->getString( "last_login" );
-			}
+			userIdAsString = std::to_string( thisUser.id );
+			//queryAsString = "SELECT last_login, creation_date FROM user WHERE id = '" + userIdAsString + "'";
+			//res = stmt->executeQuery( queryAsString.c_str() );
+			//while( res->next() )
+			//{
+			//	thisUser.creationDate = res->getString( "creation_date" );
+			//	thisUser.lastLogin = res->getString( "last_login" );
+			//}
 
 			// User exists update the last_login information
 			sql::PreparedStatement  *prep_stmt;
-			prep_stmt = con->prepareStatement( "UPDATE user SET last_login = CURRENT_TIMESTAMP WHERE id = '" + userIdAsString + "'" );
+			prep_stmt = con->prepareStatement( "UPDATE accounts SET last_login = CURRENT_TIMESTAMP WHERE id = '" + userIdAsString + "'" );
 			prep_stmt->execute();
 
 			delete prep_stmt;
 
 			salt = thisUser.salt;
-			creationDate = thisUser.creationDate;
-			hashedPassword = thisUser.hashedPassword;
+			//creationDate = thisUser.creationDate;
+			password = thisUser.password;
 
 			delete stmt;
 			delete res;
 			delete con;
 
-			return thisUser.userId;
+			return thisUser.id;
 		}
 
 		// Authentication failed

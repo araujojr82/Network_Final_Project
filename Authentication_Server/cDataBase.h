@@ -25,21 +25,13 @@ class cDataBase
 {
 public:
 		
-	// Returns the UserID or '-1' if it already exists
-	// Return other negative numbers for other erros like:
-	// -2: Email has more than 64 characters
-	// -3: Size of hashedPassword is not 64 characters
-	// -4: Size of salt is not 64 characters
-	// (...)
-	long long insertUser(std::string email, std::string hashedPassword, std::string salt);
+	// Returns the accountID or '-1' if it already exists
+	// Return other negative numbers for other erros like:	
+	long long insertUser(std::string username, std::string password, std::string salt);
 
-	// Returns the UserID or '-1' if the user was not found
-	// Writes the hashedPassword, Salt and creationDate back when finding a user
-	// Return other negative numbers for other erros like:
-	// -2: Email has more than 64 characters
-	// -3: Size of hashedPassword is not 64 characters
-	// (...)
-	long long selectUser(std::string email, std::string &hashedPassword, std::string &salt, std::string &creationDate);
+	// Returns the accountID or '-1' if the user was not found
+	// Writes the password and salt back when finding a user	
+	long long selectUser(std::string username, std::string &password, std::string &salt );
 
 };
 
