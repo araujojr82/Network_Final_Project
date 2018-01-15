@@ -758,7 +758,7 @@ void treatMessage( LPSOCKET_INFORMATION sa, string msg )
 		g_requestedID++;
 		sa->m_requestedID = g_requestedID;
 		caw.set_requestid( g_requestedID );
-		caw.set_username( username );
+		caw.set_email( username );
 		caw.set_plaintextpassword( password );
 
 		string pbStr;
@@ -799,7 +799,7 @@ void treatMessage( LPSOCKET_INFORMATION sa, string msg )
 		g_requestedID++;
 		sa->m_requestedID = g_requestedID;
 		aw.set_requestid( g_requestedID );
-		aw.set_username( username );
+		aw.set_email( username );
 		aw.set_plaintextpassword( password );
 
 		string pbStr;

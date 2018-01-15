@@ -32,1299 +32,1310 @@
 #include <google/protobuf/unknown_field_set.h>
 // @@protoc_insertion_point(includes)
 namespace authentication {
-class AuthenticateWeb;
-class AuthenticateWebDefaultTypeInternal;
-extern AuthenticateWebDefaultTypeInternal _AuthenticateWeb_default_instance_;
-class AuthenticateWebFailure;
-class AuthenticateWebFailureDefaultTypeInternal;
-extern AuthenticateWebFailureDefaultTypeInternal _AuthenticateWebFailure_default_instance_;
-class AuthenticateWebSuccess;
-class AuthenticateWebSuccessDefaultTypeInternal;
-extern AuthenticateWebSuccessDefaultTypeInternal _AuthenticateWebSuccess_default_instance_;
-class CreateAccountWeb;
-class CreateAccountWebDefaultTypeInternal;
-extern CreateAccountWebDefaultTypeInternal _CreateAccountWeb_default_instance_;
-class CreateAccountWebFailure;
-class CreateAccountWebFailureDefaultTypeInternal;
-extern CreateAccountWebFailureDefaultTypeInternal _CreateAccountWebFailure_default_instance_;
-class CreateAccountWebSuccess;
-class CreateAccountWebSuccessDefaultTypeInternal;
-extern CreateAccountWebSuccessDefaultTypeInternal _CreateAccountWebSuccess_default_instance_;
+	class AuthenticateWeb;
+	class AuthenticateWebDefaultTypeInternal;
+	extern AuthenticateWebDefaultTypeInternal _AuthenticateWeb_default_instance_;
+	class AuthenticateWebFailure;
+	class AuthenticateWebFailureDefaultTypeInternal;
+	extern AuthenticateWebFailureDefaultTypeInternal _AuthenticateWebFailure_default_instance_;
+	class AuthenticateWebSuccess;
+	class AuthenticateWebSuccessDefaultTypeInternal;
+	extern AuthenticateWebSuccessDefaultTypeInternal _AuthenticateWebSuccess_default_instance_;
+	class CreateAccountWeb;
+	class CreateAccountWebDefaultTypeInternal;
+	extern CreateAccountWebDefaultTypeInternal _CreateAccountWeb_default_instance_;
+	class CreateAccountWebFailure;
+	class CreateAccountWebFailureDefaultTypeInternal;
+	extern CreateAccountWebFailureDefaultTypeInternal _CreateAccountWebFailure_default_instance_;
+	class CreateAccountWebSuccess;
+	class CreateAccountWebSuccessDefaultTypeInternal;
+	extern CreateAccountWebSuccessDefaultTypeInternal _CreateAccountWebSuccess_default_instance_;
 }  // namespace authentication
 
 namespace authentication {
 
-namespace protobuf_authentication_2eproto {
-// Internal implementation detail -- do not call these.
-struct TableStruct {
-  static const ::google::protobuf::internal::ParseTableField entries[];
-  static const ::google::protobuf::internal::AuxillaryParseTableField aux[];
-  static const ::google::protobuf::internal::ParseTable schema[];
-  static const ::google::protobuf::uint32 offsets[];
-  static const ::google::protobuf::internal::FieldMetadata field_metadata[];
-  static const ::google::protobuf::internal::SerializationTable serialization_table[];
-  static void InitDefaultsImpl();
-};
-void AddDescriptors();
-void InitDefaults();
-}  // namespace protobuf_authentication_2eproto
-
-enum CreateAccountWebFailure_reason {
-  CreateAccountWebFailure_reason_ACCOUNT_ALREADY_EXISTS = 0,
-  CreateAccountWebFailure_reason_INVALID_PASSWORD = 1,
-  CreateAccountWebFailure_reason_INTERNAL_SERVER_ERROR = 2,
-  CreateAccountWebFailure_reason_CreateAccountWebFailure_reason_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
-  CreateAccountWebFailure_reason_CreateAccountWebFailure_reason_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
-};
-bool CreateAccountWebFailure_reason_IsValid(int value);
-const CreateAccountWebFailure_reason CreateAccountWebFailure_reason_reason_MIN = CreateAccountWebFailure_reason_ACCOUNT_ALREADY_EXISTS;
-const CreateAccountWebFailure_reason CreateAccountWebFailure_reason_reason_MAX = CreateAccountWebFailure_reason_INTERNAL_SERVER_ERROR;
-const int CreateAccountWebFailure_reason_reason_ARRAYSIZE = CreateAccountWebFailure_reason_reason_MAX + 1;
-
-const ::google::protobuf::EnumDescriptor* CreateAccountWebFailure_reason_descriptor();
-inline const ::std::string& CreateAccountWebFailure_reason_Name(CreateAccountWebFailure_reason value) {
-  return ::google::protobuf::internal::NameOfEnum(
-    CreateAccountWebFailure_reason_descriptor(), value);
-}
-inline bool CreateAccountWebFailure_reason_Parse(
-    const ::std::string& name, CreateAccountWebFailure_reason* value) {
-  return ::google::protobuf::internal::ParseNamedEnum<CreateAccountWebFailure_reason>(
-    CreateAccountWebFailure_reason_descriptor(), name, value);
-}
-enum AuthenticateWebFailure_reason {
-  AuthenticateWebFailure_reason_INVALID_CREDENTIALS = 0,
-  AuthenticateWebFailure_reason_INTERNAL_SERVER_ERROR = 1,
-  AuthenticateWebFailure_reason_AuthenticateWebFailure_reason_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
-  AuthenticateWebFailure_reason_AuthenticateWebFailure_reason_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
-};
-bool AuthenticateWebFailure_reason_IsValid(int value);
-const AuthenticateWebFailure_reason AuthenticateWebFailure_reason_reason_MIN = AuthenticateWebFailure_reason_INVALID_CREDENTIALS;
-const AuthenticateWebFailure_reason AuthenticateWebFailure_reason_reason_MAX = AuthenticateWebFailure_reason_INTERNAL_SERVER_ERROR;
-const int AuthenticateWebFailure_reason_reason_ARRAYSIZE = AuthenticateWebFailure_reason_reason_MAX + 1;
-
-const ::google::protobuf::EnumDescriptor* AuthenticateWebFailure_reason_descriptor();
-inline const ::std::string& AuthenticateWebFailure_reason_Name(AuthenticateWebFailure_reason value) {
-  return ::google::protobuf::internal::NameOfEnum(
-    AuthenticateWebFailure_reason_descriptor(), value);
-}
-inline bool AuthenticateWebFailure_reason_Parse(
-    const ::std::string& name, AuthenticateWebFailure_reason* value) {
-  return ::google::protobuf::internal::ParseNamedEnum<AuthenticateWebFailure_reason>(
-    AuthenticateWebFailure_reason_descriptor(), name, value);
-}
-// ===================================================================
-
-class CreateAccountWeb : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:authentication.CreateAccountWeb) */ {
- public:
-  CreateAccountWeb();
-  virtual ~CreateAccountWeb();
-
-  CreateAccountWeb(const CreateAccountWeb& from);
-
-  inline CreateAccountWeb& operator=(const CreateAccountWeb& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  #if LANG_CXX11
-  CreateAccountWeb(CreateAccountWeb&& from) noexcept
-    : CreateAccountWeb() {
-    *this = ::std::move(from);
-  }
-
-  inline CreateAccountWeb& operator=(CreateAccountWeb&& from) noexcept {
-    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
-      if (this != &from) InternalSwap(&from);
-    } else {
-      CopyFrom(from);
-    }
-    return *this;
-  }
-  #endif
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const CreateAccountWeb& default_instance();
-
-  static inline const CreateAccountWeb* internal_default_instance() {
-    return reinterpret_cast<const CreateAccountWeb*>(
-               &_CreateAccountWeb_default_instance_);
-  }
-  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    0;
-
-  void Swap(CreateAccountWeb* other);
-  friend void swap(CreateAccountWeb& a, CreateAccountWeb& b) {
-    a.Swap(&b);
-  }
-
-  // implements Message ----------------------------------------------
-
-  inline CreateAccountWeb* New() const PROTOBUF_FINAL { return New(NULL); }
-
-  CreateAccountWeb* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
-  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void CopyFrom(const CreateAccountWeb& from);
-  void MergeFrom(const CreateAccountWeb& from);
-  void Clear() PROTOBUF_FINAL;
-  bool IsInitialized() const PROTOBUF_FINAL;
-
-  size_t ByteSizeLong() const PROTOBUF_FINAL;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
-  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
-      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
-  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const PROTOBUF_FINAL;
-  void InternalSwap(CreateAccountWeb* other);
-  private:
-  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
-    return NULL;
-  }
-  inline void* MaybeArenaPtr() const {
-    return NULL;
-  }
-  public:
-
-  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // string username = 2;
-  void clear_username();
-  static const int kUsernameFieldNumber = 2;
-  const ::std::string& username() const;
-  void set_username(const ::std::string& value);
-  #if LANG_CXX11
-  void set_username(::std::string&& value);
-  #endif
-  void set_username(const char* value);
-  void set_username(const char* value, size_t size);
-  ::std::string* mutable_username();
-  ::std::string* release_username();
-  void set_allocated_username(::std::string* username);
-
-  // string plaintextPassword = 3;
-  void clear_plaintextpassword();
-  static const int kPlaintextPasswordFieldNumber = 3;
-  const ::std::string& plaintextpassword() const;
-  void set_plaintextpassword(const ::std::string& value);
-  #if LANG_CXX11
-  void set_plaintextpassword(::std::string&& value);
-  #endif
-  void set_plaintextpassword(const char* value);
-  void set_plaintextpassword(const char* value, size_t size);
-  ::std::string* mutable_plaintextpassword();
-  ::std::string* release_plaintextpassword();
-  void set_allocated_plaintextpassword(::std::string* plaintextpassword);
-
-  // sint64 requestId = 1;
-  void clear_requestid();
-  static const int kRequestIdFieldNumber = 1;
-  ::google::protobuf::int64 requestid() const;
-  void set_requestid(::google::protobuf::int64 value);
-
-  // @@protoc_insertion_point(class_scope:authentication.CreateAccountWeb)
- private:
-
-  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::internal::ArenaStringPtr username_;
-  ::google::protobuf::internal::ArenaStringPtr plaintextpassword_;
-  ::google::protobuf::int64 requestid_;
-  mutable int _cached_size_;
-  friend struct protobuf_authentication_2eproto::TableStruct;
-};
-// -------------------------------------------------------------------
-
-class CreateAccountWebSuccess : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:authentication.CreateAccountWebSuccess) */ {
- public:
-  CreateAccountWebSuccess();
-  virtual ~CreateAccountWebSuccess();
-
-  CreateAccountWebSuccess(const CreateAccountWebSuccess& from);
-
-  inline CreateAccountWebSuccess& operator=(const CreateAccountWebSuccess& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  #if LANG_CXX11
-  CreateAccountWebSuccess(CreateAccountWebSuccess&& from) noexcept
-    : CreateAccountWebSuccess() {
-    *this = ::std::move(from);
-  }
-
-  inline CreateAccountWebSuccess& operator=(CreateAccountWebSuccess&& from) noexcept {
-    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
-      if (this != &from) InternalSwap(&from);
-    } else {
-      CopyFrom(from);
-    }
-    return *this;
-  }
-  #endif
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const CreateAccountWebSuccess& default_instance();
-
-  static inline const CreateAccountWebSuccess* internal_default_instance() {
-    return reinterpret_cast<const CreateAccountWebSuccess*>(
-               &_CreateAccountWebSuccess_default_instance_);
-  }
-  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    1;
-
-  void Swap(CreateAccountWebSuccess* other);
-  friend void swap(CreateAccountWebSuccess& a, CreateAccountWebSuccess& b) {
-    a.Swap(&b);
-  }
-
-  // implements Message ----------------------------------------------
-
-  inline CreateAccountWebSuccess* New() const PROTOBUF_FINAL { return New(NULL); }
-
-  CreateAccountWebSuccess* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
-  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void CopyFrom(const CreateAccountWebSuccess& from);
-  void MergeFrom(const CreateAccountWebSuccess& from);
-  void Clear() PROTOBUF_FINAL;
-  bool IsInitialized() const PROTOBUF_FINAL;
-
-  size_t ByteSizeLong() const PROTOBUF_FINAL;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
-  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
-      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
-  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const PROTOBUF_FINAL;
-  void InternalSwap(CreateAccountWebSuccess* other);
-  private:
-  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
-    return NULL;
-  }
-  inline void* MaybeArenaPtr() const {
-    return NULL;
-  }
-  public:
-
-  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // sint64 requestId = 1;
-  void clear_requestid();
-  static const int kRequestIdFieldNumber = 1;
-  ::google::protobuf::int64 requestid() const;
-  void set_requestid(::google::protobuf::int64 value);
-
-  // sint64 userId = 2;
-  void clear_userid();
-  static const int kUserIdFieldNumber = 2;
-  ::google::protobuf::int64 userid() const;
-  void set_userid(::google::protobuf::int64 value);
-
-  // @@protoc_insertion_point(class_scope:authentication.CreateAccountWebSuccess)
- private:
-
-  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::int64 requestid_;
-  ::google::protobuf::int64 userid_;
-  mutable int _cached_size_;
-  friend struct protobuf_authentication_2eproto::TableStruct;
-};
-// -------------------------------------------------------------------
-
-class CreateAccountWebFailure : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:authentication.CreateAccountWebFailure) */ {
- public:
-  CreateAccountWebFailure();
-  virtual ~CreateAccountWebFailure();
-
-  CreateAccountWebFailure(const CreateAccountWebFailure& from);
-
-  inline CreateAccountWebFailure& operator=(const CreateAccountWebFailure& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  #if LANG_CXX11
-  CreateAccountWebFailure(CreateAccountWebFailure&& from) noexcept
-    : CreateAccountWebFailure() {
-    *this = ::std::move(from);
-  }
-
-  inline CreateAccountWebFailure& operator=(CreateAccountWebFailure&& from) noexcept {
-    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
-      if (this != &from) InternalSwap(&from);
-    } else {
-      CopyFrom(from);
-    }
-    return *this;
-  }
-  #endif
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const CreateAccountWebFailure& default_instance();
-
-  static inline const CreateAccountWebFailure* internal_default_instance() {
-    return reinterpret_cast<const CreateAccountWebFailure*>(
-               &_CreateAccountWebFailure_default_instance_);
-  }
-  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    2;
-
-  void Swap(CreateAccountWebFailure* other);
-  friend void swap(CreateAccountWebFailure& a, CreateAccountWebFailure& b) {
-    a.Swap(&b);
-  }
-
-  // implements Message ----------------------------------------------
-
-  inline CreateAccountWebFailure* New() const PROTOBUF_FINAL { return New(NULL); }
-
-  CreateAccountWebFailure* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
-  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void CopyFrom(const CreateAccountWebFailure& from);
-  void MergeFrom(const CreateAccountWebFailure& from);
-  void Clear() PROTOBUF_FINAL;
-  bool IsInitialized() const PROTOBUF_FINAL;
-
-  size_t ByteSizeLong() const PROTOBUF_FINAL;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
-  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
-      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
-  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const PROTOBUF_FINAL;
-  void InternalSwap(CreateAccountWebFailure* other);
-  private:
-  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
-    return NULL;
-  }
-  inline void* MaybeArenaPtr() const {
-    return NULL;
-  }
-  public:
-
-  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
-
-  // nested types ----------------------------------------------------
-
-  typedef CreateAccountWebFailure_reason reason;
-  static const reason ACCOUNT_ALREADY_EXISTS =
-    CreateAccountWebFailure_reason_ACCOUNT_ALREADY_EXISTS;
-  static const reason INVALID_PASSWORD =
-    CreateAccountWebFailure_reason_INVALID_PASSWORD;
-  static const reason INTERNAL_SERVER_ERROR =
-    CreateAccountWebFailure_reason_INTERNAL_SERVER_ERROR;
-  static inline bool reason_IsValid(int value) {
-    return CreateAccountWebFailure_reason_IsValid(value);
-  }
-  static const reason reason_MIN =
-    CreateAccountWebFailure_reason_reason_MIN;
-  static const reason reason_MAX =
-    CreateAccountWebFailure_reason_reason_MAX;
-  static const int reason_ARRAYSIZE =
-    CreateAccountWebFailure_reason_reason_ARRAYSIZE;
-  static inline const ::google::protobuf::EnumDescriptor*
-  reason_descriptor() {
-    return CreateAccountWebFailure_reason_descriptor();
-  }
-  static inline const ::std::string& reason_Name(reason value) {
-    return CreateAccountWebFailure_reason_Name(value);
-  }
-  static inline bool reason_Parse(const ::std::string& name,
-      reason* value) {
-    return CreateAccountWebFailure_reason_Parse(name, value);
-  }
-
-  // accessors -------------------------------------------------------
-
-  // sint64 requestId = 1;
-  void clear_requestid();
-  static const int kRequestIdFieldNumber = 1;
-  ::google::protobuf::int64 requestid() const;
-  void set_requestid(::google::protobuf::int64 value);
-
-  // .authentication.CreateAccountWebFailure.reason theReaseon = 2;
-  void clear_thereaseon();
-  static const int kTheReaseonFieldNumber = 2;
-  ::authentication::CreateAccountWebFailure_reason thereaseon() const;
-  void set_thereaseon(::authentication::CreateAccountWebFailure_reason value);
-
-  // @@protoc_insertion_point(class_scope:authentication.CreateAccountWebFailure)
- private:
-
-  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::int64 requestid_;
-  int thereaseon_;
-  mutable int _cached_size_;
-  friend struct protobuf_authentication_2eproto::TableStruct;
-};
-// -------------------------------------------------------------------
-
-class AuthenticateWeb : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:authentication.AuthenticateWeb) */ {
- public:
-  AuthenticateWeb();
-  virtual ~AuthenticateWeb();
-
-  AuthenticateWeb(const AuthenticateWeb& from);
-
-  inline AuthenticateWeb& operator=(const AuthenticateWeb& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  #if LANG_CXX11
-  AuthenticateWeb(AuthenticateWeb&& from) noexcept
-    : AuthenticateWeb() {
-    *this = ::std::move(from);
-  }
-
-  inline AuthenticateWeb& operator=(AuthenticateWeb&& from) noexcept {
-    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
-      if (this != &from) InternalSwap(&from);
-    } else {
-      CopyFrom(from);
-    }
-    return *this;
-  }
-  #endif
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const AuthenticateWeb& default_instance();
-
-  static inline const AuthenticateWeb* internal_default_instance() {
-    return reinterpret_cast<const AuthenticateWeb*>(
-               &_AuthenticateWeb_default_instance_);
-  }
-  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    3;
-
-  void Swap(AuthenticateWeb* other);
-  friend void swap(AuthenticateWeb& a, AuthenticateWeb& b) {
-    a.Swap(&b);
-  }
-
-  // implements Message ----------------------------------------------
-
-  inline AuthenticateWeb* New() const PROTOBUF_FINAL { return New(NULL); }
-
-  AuthenticateWeb* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
-  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void CopyFrom(const AuthenticateWeb& from);
-  void MergeFrom(const AuthenticateWeb& from);
-  void Clear() PROTOBUF_FINAL;
-  bool IsInitialized() const PROTOBUF_FINAL;
-
-  size_t ByteSizeLong() const PROTOBUF_FINAL;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
-  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
-      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
-  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const PROTOBUF_FINAL;
-  void InternalSwap(AuthenticateWeb* other);
-  private:
-  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
-    return NULL;
-  }
-  inline void* MaybeArenaPtr() const {
-    return NULL;
-  }
-  public:
-
-  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // string username = 2;
-  void clear_username();
-  static const int kUsernameFieldNumber = 2;
-  const ::std::string& username() const;
-  void set_username(const ::std::string& value);
-  #if LANG_CXX11
-  void set_username(::std::string&& value);
-  #endif
-  void set_username(const char* value);
-  void set_username(const char* value, size_t size);
-  ::std::string* mutable_username();
-  ::std::string* release_username();
-  void set_allocated_username(::std::string* username);
-
-  // string plaintextPassword = 3;
-  void clear_plaintextpassword();
-  static const int kPlaintextPasswordFieldNumber = 3;
-  const ::std::string& plaintextpassword() const;
-  void set_plaintextpassword(const ::std::string& value);
-  #if LANG_CXX11
-  void set_plaintextpassword(::std::string&& value);
-  #endif
-  void set_plaintextpassword(const char* value);
-  void set_plaintextpassword(const char* value, size_t size);
-  ::std::string* mutable_plaintextpassword();
-  ::std::string* release_plaintextpassword();
-  void set_allocated_plaintextpassword(::std::string* plaintextpassword);
-
-  // sint64 requestId = 1;
-  void clear_requestid();
-  static const int kRequestIdFieldNumber = 1;
-  ::google::protobuf::int64 requestid() const;
-  void set_requestid(::google::protobuf::int64 value);
-
-  // @@protoc_insertion_point(class_scope:authentication.AuthenticateWeb)
- private:
-
-  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::internal::ArenaStringPtr username_;
-  ::google::protobuf::internal::ArenaStringPtr plaintextpassword_;
-  ::google::protobuf::int64 requestid_;
-  mutable int _cached_size_;
-  friend struct protobuf_authentication_2eproto::TableStruct;
-};
-// -------------------------------------------------------------------
-
-class AuthenticateWebSuccess : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:authentication.AuthenticateWebSuccess) */ {
- public:
-  AuthenticateWebSuccess();
-  virtual ~AuthenticateWebSuccess();
-
-  AuthenticateWebSuccess(const AuthenticateWebSuccess& from);
-
-  inline AuthenticateWebSuccess& operator=(const AuthenticateWebSuccess& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  #if LANG_CXX11
-  AuthenticateWebSuccess(AuthenticateWebSuccess&& from) noexcept
-    : AuthenticateWebSuccess() {
-    *this = ::std::move(from);
-  }
-
-  inline AuthenticateWebSuccess& operator=(AuthenticateWebSuccess&& from) noexcept {
-    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
-      if (this != &from) InternalSwap(&from);
-    } else {
-      CopyFrom(from);
-    }
-    return *this;
-  }
-  #endif
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const AuthenticateWebSuccess& default_instance();
-
-  static inline const AuthenticateWebSuccess* internal_default_instance() {
-    return reinterpret_cast<const AuthenticateWebSuccess*>(
-               &_AuthenticateWebSuccess_default_instance_);
-  }
-  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    4;
-
-  void Swap(AuthenticateWebSuccess* other);
-  friend void swap(AuthenticateWebSuccess& a, AuthenticateWebSuccess& b) {
-    a.Swap(&b);
-  }
-
-  // implements Message ----------------------------------------------
-
-  inline AuthenticateWebSuccess* New() const PROTOBUF_FINAL { return New(NULL); }
-
-  AuthenticateWebSuccess* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
-  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void CopyFrom(const AuthenticateWebSuccess& from);
-  void MergeFrom(const AuthenticateWebSuccess& from);
-  void Clear() PROTOBUF_FINAL;
-  bool IsInitialized() const PROTOBUF_FINAL;
-
-  size_t ByteSizeLong() const PROTOBUF_FINAL;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
-  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
-      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
-  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const PROTOBUF_FINAL;
-  void InternalSwap(AuthenticateWebSuccess* other);
-  private:
-  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
-    return NULL;
-  }
-  inline void* MaybeArenaPtr() const {
-    return NULL;
-  }
-  public:
-
-  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // string creationDate = 3;
-  void clear_creationdate();
-  static const int kCreationDateFieldNumber = 3;
-  const ::std::string& creationdate() const;
-  void set_creationdate(const ::std::string& value);
-  #if LANG_CXX11
-  void set_creationdate(::std::string&& value);
-  #endif
-  void set_creationdate(const char* value);
-  void set_creationdate(const char* value, size_t size);
-  ::std::string* mutable_creationdate();
-  ::std::string* release_creationdate();
-  void set_allocated_creationdate(::std::string* creationdate);
-
-  // sint64 requestId = 1;
-  void clear_requestid();
-  static const int kRequestIdFieldNumber = 1;
-  ::google::protobuf::int64 requestid() const;
-  void set_requestid(::google::protobuf::int64 value);
-
-  // sint64 userId = 2;
-  void clear_userid();
-  static const int kUserIdFieldNumber = 2;
-  ::google::protobuf::int64 userid() const;
-  void set_userid(::google::protobuf::int64 value);
-
-  // @@protoc_insertion_point(class_scope:authentication.AuthenticateWebSuccess)
- private:
-
-  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::internal::ArenaStringPtr creationdate_;
-  ::google::protobuf::int64 requestid_;
-  ::google::protobuf::int64 userid_;
-  mutable int _cached_size_;
-  friend struct protobuf_authentication_2eproto::TableStruct;
-};
-// -------------------------------------------------------------------
-
-class AuthenticateWebFailure : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:authentication.AuthenticateWebFailure) */ {
- public:
-  AuthenticateWebFailure();
-  virtual ~AuthenticateWebFailure();
-
-  AuthenticateWebFailure(const AuthenticateWebFailure& from);
-
-  inline AuthenticateWebFailure& operator=(const AuthenticateWebFailure& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  #if LANG_CXX11
-  AuthenticateWebFailure(AuthenticateWebFailure&& from) noexcept
-    : AuthenticateWebFailure() {
-    *this = ::std::move(from);
-  }
-
-  inline AuthenticateWebFailure& operator=(AuthenticateWebFailure&& from) noexcept {
-    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
-      if (this != &from) InternalSwap(&from);
-    } else {
-      CopyFrom(from);
-    }
-    return *this;
-  }
-  #endif
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const AuthenticateWebFailure& default_instance();
-
-  static inline const AuthenticateWebFailure* internal_default_instance() {
-    return reinterpret_cast<const AuthenticateWebFailure*>(
-               &_AuthenticateWebFailure_default_instance_);
-  }
-  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    5;
-
-  void Swap(AuthenticateWebFailure* other);
-  friend void swap(AuthenticateWebFailure& a, AuthenticateWebFailure& b) {
-    a.Swap(&b);
-  }
-
-  // implements Message ----------------------------------------------
-
-  inline AuthenticateWebFailure* New() const PROTOBUF_FINAL { return New(NULL); }
-
-  AuthenticateWebFailure* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
-  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void CopyFrom(const AuthenticateWebFailure& from);
-  void MergeFrom(const AuthenticateWebFailure& from);
-  void Clear() PROTOBUF_FINAL;
-  bool IsInitialized() const PROTOBUF_FINAL;
-
-  size_t ByteSizeLong() const PROTOBUF_FINAL;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
-  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
-      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
-  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const PROTOBUF_FINAL;
-  void InternalSwap(AuthenticateWebFailure* other);
-  private:
-  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
-    return NULL;
-  }
-  inline void* MaybeArenaPtr() const {
-    return NULL;
-  }
-  public:
-
-  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
-
-  // nested types ----------------------------------------------------
-
-  typedef AuthenticateWebFailure_reason reason;
-  static const reason INVALID_CREDENTIALS =
-    AuthenticateWebFailure_reason_INVALID_CREDENTIALS;
-  static const reason INTERNAL_SERVER_ERROR =
-    AuthenticateWebFailure_reason_INTERNAL_SERVER_ERROR;
-  static inline bool reason_IsValid(int value) {
-    return AuthenticateWebFailure_reason_IsValid(value);
-  }
-  static const reason reason_MIN =
-    AuthenticateWebFailure_reason_reason_MIN;
-  static const reason reason_MAX =
-    AuthenticateWebFailure_reason_reason_MAX;
-  static const int reason_ARRAYSIZE =
-    AuthenticateWebFailure_reason_reason_ARRAYSIZE;
-  static inline const ::google::protobuf::EnumDescriptor*
-  reason_descriptor() {
-    return AuthenticateWebFailure_reason_descriptor();
-  }
-  static inline const ::std::string& reason_Name(reason value) {
-    return AuthenticateWebFailure_reason_Name(value);
-  }
-  static inline bool reason_Parse(const ::std::string& name,
-      reason* value) {
-    return AuthenticateWebFailure_reason_Parse(name, value);
-  }
-
-  // accessors -------------------------------------------------------
-
-  // sint64 requestId = 1;
-  void clear_requestid();
-  static const int kRequestIdFieldNumber = 1;
-  ::google::protobuf::int64 requestid() const;
-  void set_requestid(::google::protobuf::int64 value);
-
-  // .authentication.AuthenticateWebFailure.reason theReaseon = 2;
-  void clear_thereaseon();
-  static const int kTheReaseonFieldNumber = 2;
-  ::authentication::AuthenticateWebFailure_reason thereaseon() const;
-  void set_thereaseon(::authentication::AuthenticateWebFailure_reason value);
-
-  // @@protoc_insertion_point(class_scope:authentication.AuthenticateWebFailure)
- private:
-
-  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::int64 requestid_;
-  int thereaseon_;
-  mutable int _cached_size_;
-  friend struct protobuf_authentication_2eproto::TableStruct;
-};
-// ===================================================================
-
-
-// ===================================================================
+	namespace protobuf_authentication_2eproto {
+		// Internal implementation detail -- do not call these.
+		struct TableStruct {
+			static const ::google::protobuf::internal::ParseTableField entries[];
+			static const ::google::protobuf::internal::AuxillaryParseTableField aux[];
+			static const ::google::protobuf::internal::ParseTable schema[];
+			static const ::google::protobuf::uint32 offsets[];
+			static const ::google::protobuf::internal::FieldMetadata field_metadata[];
+			static const ::google::protobuf::internal::SerializationTable serialization_table[];
+			static void InitDefaultsImpl();
+		};
+		void AddDescriptors();
+		void InitDefaults();
+	}  // namespace protobuf_authentication_2eproto
+
+	enum CreateAccountWebFailure_reason {
+		CreateAccountWebFailure_reason_ACCOUNT_ALREADY_EXISTS = 0,
+		CreateAccountWebFailure_reason_INVALID_PASSWORD = 1,
+		CreateAccountWebFailure_reason_INTERNAL_SERVER_ERROR = 2,
+		CreateAccountWebFailure_reason_CreateAccountWebFailure_reason_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
+		CreateAccountWebFailure_reason_CreateAccountWebFailure_reason_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
+	};
+	bool CreateAccountWebFailure_reason_IsValid( int value );
+	const CreateAccountWebFailure_reason CreateAccountWebFailure_reason_reason_MIN = CreateAccountWebFailure_reason_ACCOUNT_ALREADY_EXISTS;
+	const CreateAccountWebFailure_reason CreateAccountWebFailure_reason_reason_MAX = CreateAccountWebFailure_reason_INTERNAL_SERVER_ERROR;
+	const int CreateAccountWebFailure_reason_reason_ARRAYSIZE = CreateAccountWebFailure_reason_reason_MAX + 1;
+
+	const ::google::protobuf::EnumDescriptor* CreateAccountWebFailure_reason_descriptor();
+	inline const ::std::string& CreateAccountWebFailure_reason_Name( CreateAccountWebFailure_reason value ) {
+		return ::google::protobuf::internal::NameOfEnum(
+			CreateAccountWebFailure_reason_descriptor(), value );
+	}
+	inline bool CreateAccountWebFailure_reason_Parse(
+		const ::std::string& name, CreateAccountWebFailure_reason* value ) {
+		return ::google::protobuf::internal::ParseNamedEnum<CreateAccountWebFailure_reason>(
+			CreateAccountWebFailure_reason_descriptor(), name, value );
+	}
+	enum AuthenticateWebFailure_reason {
+		AuthenticateWebFailure_reason_INVALID_CREDENTIALS = 0,
+		AuthenticateWebFailure_reason_INTERNAL_SERVER_ERROR = 1,
+		AuthenticateWebFailure_reason_AuthenticateWebFailure_reason_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
+		AuthenticateWebFailure_reason_AuthenticateWebFailure_reason_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
+	};
+	bool AuthenticateWebFailure_reason_IsValid( int value );
+	const AuthenticateWebFailure_reason AuthenticateWebFailure_reason_reason_MIN = AuthenticateWebFailure_reason_INVALID_CREDENTIALS;
+	const AuthenticateWebFailure_reason AuthenticateWebFailure_reason_reason_MAX = AuthenticateWebFailure_reason_INTERNAL_SERVER_ERROR;
+	const int AuthenticateWebFailure_reason_reason_ARRAYSIZE = AuthenticateWebFailure_reason_reason_MAX + 1;
+
+	const ::google::protobuf::EnumDescriptor* AuthenticateWebFailure_reason_descriptor();
+	inline const ::std::string& AuthenticateWebFailure_reason_Name( AuthenticateWebFailure_reason value ) {
+		return ::google::protobuf::internal::NameOfEnum(
+			AuthenticateWebFailure_reason_descriptor(), value );
+	}
+	inline bool AuthenticateWebFailure_reason_Parse(
+		const ::std::string& name, AuthenticateWebFailure_reason* value ) {
+		return ::google::protobuf::internal::ParseNamedEnum<AuthenticateWebFailure_reason>(
+			AuthenticateWebFailure_reason_descriptor(), name, value );
+	}
+	// ===================================================================
+
+	class CreateAccountWeb : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:authentication.CreateAccountWeb) */ {
+	public:
+		CreateAccountWeb();
+		virtual ~CreateAccountWeb();
+
+		CreateAccountWeb( const CreateAccountWeb& from );
+
+		inline CreateAccountWeb& operator=( const CreateAccountWeb& from ) {
+			CopyFrom( from );
+			return *this;
+		}
+#if LANG_CXX11
+		CreateAccountWeb( CreateAccountWeb&& from ) noexcept
+			: CreateAccountWeb() {
+			*this = ::std::move( from );
+		}
+
+		inline CreateAccountWeb& operator=( CreateAccountWeb&& from ) noexcept {
+			if( GetArenaNoVirtual() == from.GetArenaNoVirtual() ) {
+				if( this != &from ) InternalSwap( &from );
+			}
+			else {
+				CopyFrom( from );
+			}
+			return *this;
+		}
+#endif
+		static const ::google::protobuf::Descriptor* descriptor();
+		static const CreateAccountWeb& default_instance();
+
+		static inline const CreateAccountWeb* internal_default_instance() {
+			return reinterpret_cast<const CreateAccountWeb*>(
+				&_CreateAccountWeb_default_instance_ );
+		}
+		static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
+			0;
+
+		void Swap( CreateAccountWeb* other );
+		friend void swap( CreateAccountWeb& a, CreateAccountWeb& b ) {
+			a.Swap( &b );
+		}
+
+		// implements Message ----------------------------------------------
+
+		inline CreateAccountWeb* New() const PROTOBUF_FINAL { return New( NULL ); }
+
+		CreateAccountWeb* New( ::google::protobuf::Arena* arena ) const PROTOBUF_FINAL;
+		void CopyFrom( const ::google::protobuf::Message& from ) PROTOBUF_FINAL;
+		void MergeFrom( const ::google::protobuf::Message& from ) PROTOBUF_FINAL;
+		void CopyFrom( const CreateAccountWeb& from );
+		void MergeFrom( const CreateAccountWeb& from );
+		void Clear() PROTOBUF_FINAL;
+		bool IsInitialized() const PROTOBUF_FINAL;
+
+		size_t ByteSizeLong() const PROTOBUF_FINAL;
+		bool MergePartialFromCodedStream(
+			::google::protobuf::io::CodedInputStream* input ) PROTOBUF_FINAL;
+		void SerializeWithCachedSizes(
+			::google::protobuf::io::CodedOutputStream* output ) const PROTOBUF_FINAL;
+		::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+			bool deterministic, ::google::protobuf::uint8* target ) const PROTOBUF_FINAL;
+		int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+	private:
+		void SharedCtor();
+		void SharedDtor();
+		void SetCachedSize( int size ) const PROTOBUF_FINAL;
+		void InternalSwap( CreateAccountWeb* other );
+	private:
+		inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+			return NULL;
+		}
+		inline void* MaybeArenaPtr() const {
+			return NULL;
+		}
+	public:
+
+		::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+		// nested types ----------------------------------------------------
+
+		// accessors -------------------------------------------------------
+
+		// string email = 2;
+		void clear_email();
+		static const int kEmailFieldNumber = 2;
+		const ::std::string& email() const;
+		void set_email( const ::std::string& value );
+#if LANG_CXX11
+		void set_email( ::std::string&& value );
+#endif
+		void set_email( const char* value );
+		void set_email( const char* value, size_t size );
+		::std::string* mutable_email();
+		::std::string* release_email();
+		void set_allocated_email( ::std::string* email );
+
+		// string plaintextPassword = 3;
+		void clear_plaintextpassword();
+		static const int kPlaintextPasswordFieldNumber = 3;
+		const ::std::string& plaintextpassword() const;
+		void set_plaintextpassword( const ::std::string& value );
+#if LANG_CXX11
+		void set_plaintextpassword( ::std::string&& value );
+#endif
+		void set_plaintextpassword( const char* value );
+		void set_plaintextpassword( const char* value, size_t size );
+		::std::string* mutable_plaintextpassword();
+		::std::string* release_plaintextpassword();
+		void set_allocated_plaintextpassword( ::std::string* plaintextpassword );
+
+		// sint64 requestId = 1;
+		void clear_requestid();
+		static const int kRequestIdFieldNumber = 1;
+		::google::protobuf::int64 requestid() const;
+		void set_requestid( ::google::protobuf::int64 value );
+
+		// @@protoc_insertion_point(class_scope:authentication.CreateAccountWeb)
+	private:
+
+		::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+		::google::protobuf::internal::ArenaStringPtr email_;
+		::google::protobuf::internal::ArenaStringPtr plaintextpassword_;
+		::google::protobuf::int64 requestid_;
+		mutable int _cached_size_;
+		friend struct protobuf_authentication_2eproto::TableStruct;
+	};
+	// -------------------------------------------------------------------
+
+	class CreateAccountWebSuccess : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:authentication.CreateAccountWebSuccess) */ {
+	public:
+		CreateAccountWebSuccess();
+		virtual ~CreateAccountWebSuccess();
+
+		CreateAccountWebSuccess( const CreateAccountWebSuccess& from );
+
+		inline CreateAccountWebSuccess& operator=( const CreateAccountWebSuccess& from ) {
+			CopyFrom( from );
+			return *this;
+		}
+#if LANG_CXX11
+		CreateAccountWebSuccess( CreateAccountWebSuccess&& from ) noexcept
+			: CreateAccountWebSuccess() {
+			*this = ::std::move( from );
+		}
+
+		inline CreateAccountWebSuccess& operator=( CreateAccountWebSuccess&& from ) noexcept {
+			if( GetArenaNoVirtual() == from.GetArenaNoVirtual() ) {
+				if( this != &from ) InternalSwap( &from );
+			}
+			else {
+				CopyFrom( from );
+			}
+			return *this;
+		}
+#endif
+		static const ::google::protobuf::Descriptor* descriptor();
+		static const CreateAccountWebSuccess& default_instance();
+
+		static inline const CreateAccountWebSuccess* internal_default_instance() {
+			return reinterpret_cast<const CreateAccountWebSuccess*>(
+				&_CreateAccountWebSuccess_default_instance_ );
+		}
+		static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
+			1;
+
+		void Swap( CreateAccountWebSuccess* other );
+		friend void swap( CreateAccountWebSuccess& a, CreateAccountWebSuccess& b ) {
+			a.Swap( &b );
+		}
+
+		// implements Message ----------------------------------------------
+
+		inline CreateAccountWebSuccess* New() const PROTOBUF_FINAL { return New( NULL ); }
+
+		CreateAccountWebSuccess* New( ::google::protobuf::Arena* arena ) const PROTOBUF_FINAL;
+		void CopyFrom( const ::google::protobuf::Message& from ) PROTOBUF_FINAL;
+		void MergeFrom( const ::google::protobuf::Message& from ) PROTOBUF_FINAL;
+		void CopyFrom( const CreateAccountWebSuccess& from );
+		void MergeFrom( const CreateAccountWebSuccess& from );
+		void Clear() PROTOBUF_FINAL;
+		bool IsInitialized() const PROTOBUF_FINAL;
+
+		size_t ByteSizeLong() const PROTOBUF_FINAL;
+		bool MergePartialFromCodedStream(
+			::google::protobuf::io::CodedInputStream* input ) PROTOBUF_FINAL;
+		void SerializeWithCachedSizes(
+			::google::protobuf::io::CodedOutputStream* output ) const PROTOBUF_FINAL;
+		::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+			bool deterministic, ::google::protobuf::uint8* target ) const PROTOBUF_FINAL;
+		int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+	private:
+		void SharedCtor();
+		void SharedDtor();
+		void SetCachedSize( int size ) const PROTOBUF_FINAL;
+		void InternalSwap( CreateAccountWebSuccess* other );
+	private:
+		inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+			return NULL;
+		}
+		inline void* MaybeArenaPtr() const {
+			return NULL;
+		}
+	public:
+
+		::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+		// nested types ----------------------------------------------------
+
+		// accessors -------------------------------------------------------
+
+		// sint64 requestId = 1;
+		void clear_requestid();
+		static const int kRequestIdFieldNumber = 1;
+		::google::protobuf::int64 requestid() const;
+		void set_requestid( ::google::protobuf::int64 value );
+
+		// sint64 userId = 2;
+		void clear_userid();
+		static const int kUserIdFieldNumber = 2;
+		::google::protobuf::int64 userid() const;
+		void set_userid( ::google::protobuf::int64 value );
+
+		// @@protoc_insertion_point(class_scope:authentication.CreateAccountWebSuccess)
+	private:
+
+		::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+		::google::protobuf::int64 requestid_;
+		::google::protobuf::int64 userid_;
+		mutable int _cached_size_;
+		friend struct protobuf_authentication_2eproto::TableStruct;
+	};
+	// -------------------------------------------------------------------
+
+	class CreateAccountWebFailure : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:authentication.CreateAccountWebFailure) */ {
+	public:
+		CreateAccountWebFailure();
+		virtual ~CreateAccountWebFailure();
+
+		CreateAccountWebFailure( const CreateAccountWebFailure& from );
+
+		inline CreateAccountWebFailure& operator=( const CreateAccountWebFailure& from ) {
+			CopyFrom( from );
+			return *this;
+		}
+#if LANG_CXX11
+		CreateAccountWebFailure( CreateAccountWebFailure&& from ) noexcept
+			: CreateAccountWebFailure() {
+			*this = ::std::move( from );
+		}
+
+		inline CreateAccountWebFailure& operator=( CreateAccountWebFailure&& from ) noexcept {
+			if( GetArenaNoVirtual() == from.GetArenaNoVirtual() ) {
+				if( this != &from ) InternalSwap( &from );
+			}
+			else {
+				CopyFrom( from );
+			}
+			return *this;
+		}
+#endif
+		static const ::google::protobuf::Descriptor* descriptor();
+		static const CreateAccountWebFailure& default_instance();
+
+		static inline const CreateAccountWebFailure* internal_default_instance() {
+			return reinterpret_cast<const CreateAccountWebFailure*>(
+				&_CreateAccountWebFailure_default_instance_ );
+		}
+		static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
+			2;
+
+		void Swap( CreateAccountWebFailure* other );
+		friend void swap( CreateAccountWebFailure& a, CreateAccountWebFailure& b ) {
+			a.Swap( &b );
+		}
+
+		// implements Message ----------------------------------------------
+
+		inline CreateAccountWebFailure* New() const PROTOBUF_FINAL { return New( NULL ); }
+
+		CreateAccountWebFailure* New( ::google::protobuf::Arena* arena ) const PROTOBUF_FINAL;
+		void CopyFrom( const ::google::protobuf::Message& from ) PROTOBUF_FINAL;
+		void MergeFrom( const ::google::protobuf::Message& from ) PROTOBUF_FINAL;
+		void CopyFrom( const CreateAccountWebFailure& from );
+		void MergeFrom( const CreateAccountWebFailure& from );
+		void Clear() PROTOBUF_FINAL;
+		bool IsInitialized() const PROTOBUF_FINAL;
+
+		size_t ByteSizeLong() const PROTOBUF_FINAL;
+		bool MergePartialFromCodedStream(
+			::google::protobuf::io::CodedInputStream* input ) PROTOBUF_FINAL;
+		void SerializeWithCachedSizes(
+			::google::protobuf::io::CodedOutputStream* output ) const PROTOBUF_FINAL;
+		::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+			bool deterministic, ::google::protobuf::uint8* target ) const PROTOBUF_FINAL;
+		int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+	private:
+		void SharedCtor();
+		void SharedDtor();
+		void SetCachedSize( int size ) const PROTOBUF_FINAL;
+		void InternalSwap( CreateAccountWebFailure* other );
+	private:
+		inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+			return NULL;
+		}
+		inline void* MaybeArenaPtr() const {
+			return NULL;
+		}
+	public:
+
+		::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+		// nested types ----------------------------------------------------
+
+		typedef CreateAccountWebFailure_reason reason;
+		static const reason ACCOUNT_ALREADY_EXISTS =
+			CreateAccountWebFailure_reason_ACCOUNT_ALREADY_EXISTS;
+		static const reason INVALID_PASSWORD =
+			CreateAccountWebFailure_reason_INVALID_PASSWORD;
+		static const reason INTERNAL_SERVER_ERROR =
+			CreateAccountWebFailure_reason_INTERNAL_SERVER_ERROR;
+		static inline bool reason_IsValid( int value ) {
+			return CreateAccountWebFailure_reason_IsValid( value );
+		}
+		static const reason reason_MIN =
+			CreateAccountWebFailure_reason_reason_MIN;
+		static const reason reason_MAX =
+			CreateAccountWebFailure_reason_reason_MAX;
+		static const int reason_ARRAYSIZE =
+			CreateAccountWebFailure_reason_reason_ARRAYSIZE;
+		static inline const ::google::protobuf::EnumDescriptor*
+			reason_descriptor() {
+			return CreateAccountWebFailure_reason_descriptor();
+		}
+		static inline const ::std::string& reason_Name( reason value ) {
+			return CreateAccountWebFailure_reason_Name( value );
+		}
+		static inline bool reason_Parse( const ::std::string& name,
+			reason* value ) {
+			return CreateAccountWebFailure_reason_Parse( name, value );
+		}
+
+		// accessors -------------------------------------------------------
+
+		// sint64 requestId = 1;
+		void clear_requestid();
+		static const int kRequestIdFieldNumber = 1;
+		::google::protobuf::int64 requestid() const;
+		void set_requestid( ::google::protobuf::int64 value );
+
+		// .authentication.CreateAccountWebFailure.reason theReaseon = 2;
+		void clear_thereaseon();
+		static const int kTheReaseonFieldNumber = 2;
+		::authentication::CreateAccountWebFailure_reason thereaseon() const;
+		void set_thereaseon( ::authentication::CreateAccountWebFailure_reason value );
+
+		// @@protoc_insertion_point(class_scope:authentication.CreateAccountWebFailure)
+	private:
+
+		::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+		::google::protobuf::int64 requestid_;
+		int thereaseon_;
+		mutable int _cached_size_;
+		friend struct protobuf_authentication_2eproto::TableStruct;
+	};
+	// -------------------------------------------------------------------
+
+	class AuthenticateWeb : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:authentication.AuthenticateWeb) */ {
+	public:
+		AuthenticateWeb();
+		virtual ~AuthenticateWeb();
+
+		AuthenticateWeb( const AuthenticateWeb& from );
+
+		inline AuthenticateWeb& operator=( const AuthenticateWeb& from ) {
+			CopyFrom( from );
+			return *this;
+		}
+#if LANG_CXX11
+		AuthenticateWeb( AuthenticateWeb&& from ) noexcept
+			: AuthenticateWeb() {
+			*this = ::std::move( from );
+		}
+
+		inline AuthenticateWeb& operator=( AuthenticateWeb&& from ) noexcept {
+			if( GetArenaNoVirtual() == from.GetArenaNoVirtual() ) {
+				if( this != &from ) InternalSwap( &from );
+			}
+			else {
+				CopyFrom( from );
+			}
+			return *this;
+		}
+#endif
+		static const ::google::protobuf::Descriptor* descriptor();
+		static const AuthenticateWeb& default_instance();
+
+		static inline const AuthenticateWeb* internal_default_instance() {
+			return reinterpret_cast<const AuthenticateWeb*>(
+				&_AuthenticateWeb_default_instance_ );
+		}
+		static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
+			3;
+
+		void Swap( AuthenticateWeb* other );
+		friend void swap( AuthenticateWeb& a, AuthenticateWeb& b ) {
+			a.Swap( &b );
+		}
+
+		// implements Message ----------------------------------------------
+
+		inline AuthenticateWeb* New() const PROTOBUF_FINAL { return New( NULL ); }
+
+		AuthenticateWeb* New( ::google::protobuf::Arena* arena ) const PROTOBUF_FINAL;
+		void CopyFrom( const ::google::protobuf::Message& from ) PROTOBUF_FINAL;
+		void MergeFrom( const ::google::protobuf::Message& from ) PROTOBUF_FINAL;
+		void CopyFrom( const AuthenticateWeb& from );
+		void MergeFrom( const AuthenticateWeb& from );
+		void Clear() PROTOBUF_FINAL;
+		bool IsInitialized() const PROTOBUF_FINAL;
+
+		size_t ByteSizeLong() const PROTOBUF_FINAL;
+		bool MergePartialFromCodedStream(
+			::google::protobuf::io::CodedInputStream* input ) PROTOBUF_FINAL;
+		void SerializeWithCachedSizes(
+			::google::protobuf::io::CodedOutputStream* output ) const PROTOBUF_FINAL;
+		::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+			bool deterministic, ::google::protobuf::uint8* target ) const PROTOBUF_FINAL;
+		int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+	private:
+		void SharedCtor();
+		void SharedDtor();
+		void SetCachedSize( int size ) const PROTOBUF_FINAL;
+		void InternalSwap( AuthenticateWeb* other );
+	private:
+		inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+			return NULL;
+		}
+		inline void* MaybeArenaPtr() const {
+			return NULL;
+		}
+	public:
+
+		::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+		// nested types ----------------------------------------------------
+
+		// accessors -------------------------------------------------------
+
+		// string email = 2;
+		void clear_email();
+		static const int kEmailFieldNumber = 2;
+		const ::std::string& email() const;
+		void set_email( const ::std::string& value );
+#if LANG_CXX11
+		void set_email( ::std::string&& value );
+#endif
+		void set_email( const char* value );
+		void set_email( const char* value, size_t size );
+		::std::string* mutable_email();
+		::std::string* release_email();
+		void set_allocated_email( ::std::string* email );
+
+		// string plaintextPassword = 3;
+		void clear_plaintextpassword();
+		static const int kPlaintextPasswordFieldNumber = 3;
+		const ::std::string& plaintextpassword() const;
+		void set_plaintextpassword( const ::std::string& value );
+#if LANG_CXX11
+		void set_plaintextpassword( ::std::string&& value );
+#endif
+		void set_plaintextpassword( const char* value );
+		void set_plaintextpassword( const char* value, size_t size );
+		::std::string* mutable_plaintextpassword();
+		::std::string* release_plaintextpassword();
+		void set_allocated_plaintextpassword( ::std::string* plaintextpassword );
+
+		// sint64 requestId = 1;
+		void clear_requestid();
+		static const int kRequestIdFieldNumber = 1;
+		::google::protobuf::int64 requestid() const;
+		void set_requestid( ::google::protobuf::int64 value );
+
+		// @@protoc_insertion_point(class_scope:authentication.AuthenticateWeb)
+	private:
+
+		::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+		::google::protobuf::internal::ArenaStringPtr email_;
+		::google::protobuf::internal::ArenaStringPtr plaintextpassword_;
+		::google::protobuf::int64 requestid_;
+		mutable int _cached_size_;
+		friend struct protobuf_authentication_2eproto::TableStruct;
+	};
+	// -------------------------------------------------------------------
+
+	class AuthenticateWebSuccess : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:authentication.AuthenticateWebSuccess) */ {
+	public:
+		AuthenticateWebSuccess();
+		virtual ~AuthenticateWebSuccess();
+
+		AuthenticateWebSuccess( const AuthenticateWebSuccess& from );
+
+		inline AuthenticateWebSuccess& operator=( const AuthenticateWebSuccess& from ) {
+			CopyFrom( from );
+			return *this;
+		}
+#if LANG_CXX11
+		AuthenticateWebSuccess( AuthenticateWebSuccess&& from ) noexcept
+			: AuthenticateWebSuccess() {
+			*this = ::std::move( from );
+		}
+
+		inline AuthenticateWebSuccess& operator=( AuthenticateWebSuccess&& from ) noexcept {
+			if( GetArenaNoVirtual() == from.GetArenaNoVirtual() ) {
+				if( this != &from ) InternalSwap( &from );
+			}
+			else {
+				CopyFrom( from );
+			}
+			return *this;
+		}
+#endif
+		static const ::google::protobuf::Descriptor* descriptor();
+		static const AuthenticateWebSuccess& default_instance();
+
+		static inline const AuthenticateWebSuccess* internal_default_instance() {
+			return reinterpret_cast<const AuthenticateWebSuccess*>(
+				&_AuthenticateWebSuccess_default_instance_ );
+		}
+		static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
+			4;
+
+		void Swap( AuthenticateWebSuccess* other );
+		friend void swap( AuthenticateWebSuccess& a, AuthenticateWebSuccess& b ) {
+			a.Swap( &b );
+		}
+
+		// implements Message ----------------------------------------------
+
+		inline AuthenticateWebSuccess* New() const PROTOBUF_FINAL { return New( NULL ); }
+
+		AuthenticateWebSuccess* New( ::google::protobuf::Arena* arena ) const PROTOBUF_FINAL;
+		void CopyFrom( const ::google::protobuf::Message& from ) PROTOBUF_FINAL;
+		void MergeFrom( const ::google::protobuf::Message& from ) PROTOBUF_FINAL;
+		void CopyFrom( const AuthenticateWebSuccess& from );
+		void MergeFrom( const AuthenticateWebSuccess& from );
+		void Clear() PROTOBUF_FINAL;
+		bool IsInitialized() const PROTOBUF_FINAL;
+
+		size_t ByteSizeLong() const PROTOBUF_FINAL;
+		bool MergePartialFromCodedStream(
+			::google::protobuf::io::CodedInputStream* input ) PROTOBUF_FINAL;
+		void SerializeWithCachedSizes(
+			::google::protobuf::io::CodedOutputStream* output ) const PROTOBUF_FINAL;
+		::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+			bool deterministic, ::google::protobuf::uint8* target ) const PROTOBUF_FINAL;
+		int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+	private:
+		void SharedCtor();
+		void SharedDtor();
+		void SetCachedSize( int size ) const PROTOBUF_FINAL;
+		void InternalSwap( AuthenticateWebSuccess* other );
+	private:
+		inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+			return NULL;
+		}
+		inline void* MaybeArenaPtr() const {
+			return NULL;
+		}
+	public:
+
+		::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+		// nested types ----------------------------------------------------
+
+		// accessors -------------------------------------------------------
+
+		// string creationDate = 3;
+		void clear_creationdate();
+		static const int kCreationDateFieldNumber = 3;
+		const ::std::string& creationdate() const;
+		void set_creationdate( const ::std::string& value );
+#if LANG_CXX11
+		void set_creationdate( ::std::string&& value );
+#endif
+		void set_creationdate( const char* value );
+		void set_creationdate( const char* value, size_t size );
+		::std::string* mutable_creationdate();
+		::std::string* release_creationdate();
+		void set_allocated_creationdate( ::std::string* creationdate );
+
+		// sint64 requestId = 1;
+		void clear_requestid();
+		static const int kRequestIdFieldNumber = 1;
+		::google::protobuf::int64 requestid() const;
+		void set_requestid( ::google::protobuf::int64 value );
+
+		// sint64 userId = 2;
+		void clear_userid();
+		static const int kUserIdFieldNumber = 2;
+		::google::protobuf::int64 userid() const;
+		void set_userid( ::google::protobuf::int64 value );
+
+		// @@protoc_insertion_point(class_scope:authentication.AuthenticateWebSuccess)
+	private:
+
+		::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+		::google::protobuf::internal::ArenaStringPtr creationdate_;
+		::google::protobuf::int64 requestid_;
+		::google::protobuf::int64 userid_;
+		mutable int _cached_size_;
+		friend struct protobuf_authentication_2eproto::TableStruct;
+	};
+	// -------------------------------------------------------------------
+
+	class AuthenticateWebFailure : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:authentication.AuthenticateWebFailure) */ {
+	public:
+		AuthenticateWebFailure();
+		virtual ~AuthenticateWebFailure();
+
+		AuthenticateWebFailure( const AuthenticateWebFailure& from );
+
+		inline AuthenticateWebFailure& operator=( const AuthenticateWebFailure& from ) {
+			CopyFrom( from );
+			return *this;
+		}
+#if LANG_CXX11
+		AuthenticateWebFailure( AuthenticateWebFailure&& from ) noexcept
+			: AuthenticateWebFailure() {
+			*this = ::std::move( from );
+		}
+
+		inline AuthenticateWebFailure& operator=( AuthenticateWebFailure&& from ) noexcept {
+			if( GetArenaNoVirtual() == from.GetArenaNoVirtual() ) {
+				if( this != &from ) InternalSwap( &from );
+			}
+			else {
+				CopyFrom( from );
+			}
+			return *this;
+		}
+#endif
+		static const ::google::protobuf::Descriptor* descriptor();
+		static const AuthenticateWebFailure& default_instance();
+
+		static inline const AuthenticateWebFailure* internal_default_instance() {
+			return reinterpret_cast<const AuthenticateWebFailure*>(
+				&_AuthenticateWebFailure_default_instance_ );
+		}
+		static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
+			5;
+
+		void Swap( AuthenticateWebFailure* other );
+		friend void swap( AuthenticateWebFailure& a, AuthenticateWebFailure& b ) {
+			a.Swap( &b );
+		}
+
+		// implements Message ----------------------------------------------
+
+		inline AuthenticateWebFailure* New() const PROTOBUF_FINAL { return New( NULL ); }
+
+		AuthenticateWebFailure* New( ::google::protobuf::Arena* arena ) const PROTOBUF_FINAL;
+		void CopyFrom( const ::google::protobuf::Message& from ) PROTOBUF_FINAL;
+		void MergeFrom( const ::google::protobuf::Message& from ) PROTOBUF_FINAL;
+		void CopyFrom( const AuthenticateWebFailure& from );
+		void MergeFrom( const AuthenticateWebFailure& from );
+		void Clear() PROTOBUF_FINAL;
+		bool IsInitialized() const PROTOBUF_FINAL;
+
+		size_t ByteSizeLong() const PROTOBUF_FINAL;
+		bool MergePartialFromCodedStream(
+			::google::protobuf::io::CodedInputStream* input ) PROTOBUF_FINAL;
+		void SerializeWithCachedSizes(
+			::google::protobuf::io::CodedOutputStream* output ) const PROTOBUF_FINAL;
+		::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+			bool deterministic, ::google::protobuf::uint8* target ) const PROTOBUF_FINAL;
+		int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+	private:
+		void SharedCtor();
+		void SharedDtor();
+		void SetCachedSize( int size ) const PROTOBUF_FINAL;
+		void InternalSwap( AuthenticateWebFailure* other );
+	private:
+		inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+			return NULL;
+		}
+		inline void* MaybeArenaPtr() const {
+			return NULL;
+		}
+	public:
+
+		::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+		// nested types ----------------------------------------------------
+
+		typedef AuthenticateWebFailure_reason reason;
+		static const reason INVALID_CREDENTIALS =
+			AuthenticateWebFailure_reason_INVALID_CREDENTIALS;
+		static const reason INTERNAL_SERVER_ERROR =
+			AuthenticateWebFailure_reason_INTERNAL_SERVER_ERROR;
+		static inline bool reason_IsValid( int value ) {
+			return AuthenticateWebFailure_reason_IsValid( value );
+		}
+		static const reason reason_MIN =
+			AuthenticateWebFailure_reason_reason_MIN;
+		static const reason reason_MAX =
+			AuthenticateWebFailure_reason_reason_MAX;
+		static const int reason_ARRAYSIZE =
+			AuthenticateWebFailure_reason_reason_ARRAYSIZE;
+		static inline const ::google::protobuf::EnumDescriptor*
+			reason_descriptor() {
+			return AuthenticateWebFailure_reason_descriptor();
+		}
+		static inline const ::std::string& reason_Name( reason value ) {
+			return AuthenticateWebFailure_reason_Name( value );
+		}
+		static inline bool reason_Parse( const ::std::string& name,
+			reason* value ) {
+			return AuthenticateWebFailure_reason_Parse( name, value );
+		}
+
+		// accessors -------------------------------------------------------
+
+		// sint64 requestId = 1;
+		void clear_requestid();
+		static const int kRequestIdFieldNumber = 1;
+		::google::protobuf::int64 requestid() const;
+		void set_requestid( ::google::protobuf::int64 value );
+
+		// .authentication.AuthenticateWebFailure.reason theReaseon = 2;
+		void clear_thereaseon();
+		static const int kTheReaseonFieldNumber = 2;
+		::authentication::AuthenticateWebFailure_reason thereaseon() const;
+		void set_thereaseon( ::authentication::AuthenticateWebFailure_reason value );
+
+		// @@protoc_insertion_point(class_scope:authentication.AuthenticateWebFailure)
+	private:
+
+		::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+		::google::protobuf::int64 requestid_;
+		int thereaseon_;
+		mutable int _cached_size_;
+		friend struct protobuf_authentication_2eproto::TableStruct;
+	};
+	// ===================================================================
+
+
+	// ===================================================================
 
 #if !PROTOBUF_INLINE_NOT_IN_HEADERS
 #ifdef __GNUC__
-  #pragma GCC diagnostic push
-  #pragma GCC diagnostic ignored "-Wstrict-aliasing"
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wstrict-aliasing"
 #endif  // __GNUC__
-// CreateAccountWeb
+	// CreateAccountWeb
 
-// sint64 requestId = 1;
-inline void CreateAccountWeb::clear_requestid() {
-  requestid_ = GOOGLE_LONGLONG(0);
-}
-inline ::google::protobuf::int64 CreateAccountWeb::requestid() const {
-  // @@protoc_insertion_point(field_get:authentication.CreateAccountWeb.requestId)
-  return requestid_;
-}
-inline void CreateAccountWeb::set_requestid(::google::protobuf::int64 value) {
-  
-  requestid_ = value;
-  // @@protoc_insertion_point(field_set:authentication.CreateAccountWeb.requestId)
-}
+	// sint64 requestId = 1;
+	inline void CreateAccountWeb::clear_requestid() {
+		requestid_ = GOOGLE_LONGLONG( 0 );
+	}
+	inline ::google::protobuf::int64 CreateAccountWeb::requestid() const {
+		// @@protoc_insertion_point(field_get:authentication.CreateAccountWeb.requestId)
+		return requestid_;
+	}
+	inline void CreateAccountWeb::set_requestid( ::google::protobuf::int64 value ) {
 
-// string username = 2;
-inline void CreateAccountWeb::clear_username() {
-  username_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline const ::std::string& CreateAccountWeb::username() const {
-  // @@protoc_insertion_point(field_get:authentication.CreateAccountWeb.username)
-  return username_.GetNoArena();
-}
-inline void CreateAccountWeb::set_username(const ::std::string& value) {
-  
-  username_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:authentication.CreateAccountWeb.username)
-}
+		requestid_ = value;
+		// @@protoc_insertion_point(field_set:authentication.CreateAccountWeb.requestId)
+	}
+
+	// string email = 2;
+	inline void CreateAccountWeb::clear_email() {
+		email_.ClearToEmptyNoArena( &::google::protobuf::internal::GetEmptyStringAlreadyInited() );
+	}
+	inline const ::std::string& CreateAccountWeb::email() const {
+		// @@protoc_insertion_point(field_get:authentication.CreateAccountWeb.email)
+		return email_.GetNoArena();
+	}
+	inline void CreateAccountWeb::set_email( const ::std::string& value ) {
+
+		email_.SetNoArena( &::google::protobuf::internal::GetEmptyStringAlreadyInited(), value );
+		// @@protoc_insertion_point(field_set:authentication.CreateAccountWeb.email)
+	}
 #if LANG_CXX11
-inline void CreateAccountWeb::set_username(::std::string&& value) {
-  
-  username_.SetNoArena(
-    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:authentication.CreateAccountWeb.username)
-}
-#endif
-inline void CreateAccountWeb::set_username(const char* value) {
-  GOOGLE_DCHECK(value != NULL);
-  
-  username_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:authentication.CreateAccountWeb.username)
-}
-inline void CreateAccountWeb::set_username(const char* value, size_t size) {
-  
-  username_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:authentication.CreateAccountWeb.username)
-}
-inline ::std::string* CreateAccountWeb::mutable_username() {
-  
-  // @@protoc_insertion_point(field_mutable:authentication.CreateAccountWeb.username)
-  return username_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline ::std::string* CreateAccountWeb::release_username() {
-  // @@protoc_insertion_point(field_release:authentication.CreateAccountWeb.username)
-  
-  return username_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline void CreateAccountWeb::set_allocated_username(::std::string* username) {
-  if (username != NULL) {
-    
-  } else {
-    
-  }
-  username_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), username);
-  // @@protoc_insertion_point(field_set_allocated:authentication.CreateAccountWeb.username)
-}
+	inline void CreateAccountWeb::set_email( ::std::string&& value ) {
 
-// string plaintextPassword = 3;
-inline void CreateAccountWeb::clear_plaintextpassword() {
-  plaintextpassword_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline const ::std::string& CreateAccountWeb::plaintextpassword() const {
-  // @@protoc_insertion_point(field_get:authentication.CreateAccountWeb.plaintextPassword)
-  return plaintextpassword_.GetNoArena();
-}
-inline void CreateAccountWeb::set_plaintextpassword(const ::std::string& value) {
-  
-  plaintextpassword_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:authentication.CreateAccountWeb.plaintextPassword)
-}
+		email_.SetNoArena(
+			&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move( value ) );
+		// @@protoc_insertion_point(field_set_rvalue:authentication.CreateAccountWeb.email)
+	}
+#endif
+	inline void CreateAccountWeb::set_email( const char* value ) {
+		GOOGLE_DCHECK( value != NULL );
+
+		email_.SetNoArena( &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string( value ) );
+		// @@protoc_insertion_point(field_set_char:authentication.CreateAccountWeb.email)
+	}
+	inline void CreateAccountWeb::set_email( const char* value, size_t size ) {
+
+		email_.SetNoArena( &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+			::std::string( reinterpret_cast<const char*>( value ), size ) );
+		// @@protoc_insertion_point(field_set_pointer:authentication.CreateAccountWeb.email)
+	}
+	inline ::std::string* CreateAccountWeb::mutable_email() {
+
+		// @@protoc_insertion_point(field_mutable:authentication.CreateAccountWeb.email)
+		return email_.MutableNoArena( &::google::protobuf::internal::GetEmptyStringAlreadyInited() );
+	}
+	inline ::std::string* CreateAccountWeb::release_email() {
+		// @@protoc_insertion_point(field_release:authentication.CreateAccountWeb.email)
+
+		return email_.ReleaseNoArena( &::google::protobuf::internal::GetEmptyStringAlreadyInited() );
+	}
+	inline void CreateAccountWeb::set_allocated_email( ::std::string* email ) {
+		if( email != NULL ) {
+
+		}
+		else {
+
+		}
+		email_.SetAllocatedNoArena( &::google::protobuf::internal::GetEmptyStringAlreadyInited(), email );
+		// @@protoc_insertion_point(field_set_allocated:authentication.CreateAccountWeb.email)
+	}
+
+	// string plaintextPassword = 3;
+	inline void CreateAccountWeb::clear_plaintextpassword() {
+		plaintextpassword_.ClearToEmptyNoArena( &::google::protobuf::internal::GetEmptyStringAlreadyInited() );
+	}
+	inline const ::std::string& CreateAccountWeb::plaintextpassword() const {
+		// @@protoc_insertion_point(field_get:authentication.CreateAccountWeb.plaintextPassword)
+		return plaintextpassword_.GetNoArena();
+	}
+	inline void CreateAccountWeb::set_plaintextpassword( const ::std::string& value ) {
+
+		plaintextpassword_.SetNoArena( &::google::protobuf::internal::GetEmptyStringAlreadyInited(), value );
+		// @@protoc_insertion_point(field_set:authentication.CreateAccountWeb.plaintextPassword)
+	}
 #if LANG_CXX11
-inline void CreateAccountWeb::set_plaintextpassword(::std::string&& value) {
-  
-  plaintextpassword_.SetNoArena(
-    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:authentication.CreateAccountWeb.plaintextPassword)
-}
+	inline void CreateAccountWeb::set_plaintextpassword( ::std::string&& value ) {
+
+		plaintextpassword_.SetNoArena(
+			&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move( value ) );
+		// @@protoc_insertion_point(field_set_rvalue:authentication.CreateAccountWeb.plaintextPassword)
+	}
 #endif
-inline void CreateAccountWeb::set_plaintextpassword(const char* value) {
-  GOOGLE_DCHECK(value != NULL);
-  
-  plaintextpassword_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:authentication.CreateAccountWeb.plaintextPassword)
-}
-inline void CreateAccountWeb::set_plaintextpassword(const char* value, size_t size) {
-  
-  plaintextpassword_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:authentication.CreateAccountWeb.plaintextPassword)
-}
-inline ::std::string* CreateAccountWeb::mutable_plaintextpassword() {
-  
-  // @@protoc_insertion_point(field_mutable:authentication.CreateAccountWeb.plaintextPassword)
-  return plaintextpassword_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline ::std::string* CreateAccountWeb::release_plaintextpassword() {
-  // @@protoc_insertion_point(field_release:authentication.CreateAccountWeb.plaintextPassword)
-  
-  return plaintextpassword_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline void CreateAccountWeb::set_allocated_plaintextpassword(::std::string* plaintextpassword) {
-  if (plaintextpassword != NULL) {
-    
-  } else {
-    
-  }
-  plaintextpassword_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), plaintextpassword);
-  // @@protoc_insertion_point(field_set_allocated:authentication.CreateAccountWeb.plaintextPassword)
-}
+	inline void CreateAccountWeb::set_plaintextpassword( const char* value ) {
+		GOOGLE_DCHECK( value != NULL );
 
-// -------------------------------------------------------------------
+		plaintextpassword_.SetNoArena( &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string( value ) );
+		// @@protoc_insertion_point(field_set_char:authentication.CreateAccountWeb.plaintextPassword)
+	}
+	inline void CreateAccountWeb::set_plaintextpassword( const char* value, size_t size ) {
 
-// CreateAccountWebSuccess
+		plaintextpassword_.SetNoArena( &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+			::std::string( reinterpret_cast<const char*>( value ), size ) );
+		// @@protoc_insertion_point(field_set_pointer:authentication.CreateAccountWeb.plaintextPassword)
+	}
+	inline ::std::string* CreateAccountWeb::mutable_plaintextpassword() {
 
-// sint64 requestId = 1;
-inline void CreateAccountWebSuccess::clear_requestid() {
-  requestid_ = GOOGLE_LONGLONG(0);
-}
-inline ::google::protobuf::int64 CreateAccountWebSuccess::requestid() const {
-  // @@protoc_insertion_point(field_get:authentication.CreateAccountWebSuccess.requestId)
-  return requestid_;
-}
-inline void CreateAccountWebSuccess::set_requestid(::google::protobuf::int64 value) {
-  
-  requestid_ = value;
-  // @@protoc_insertion_point(field_set:authentication.CreateAccountWebSuccess.requestId)
-}
+		// @@protoc_insertion_point(field_mutable:authentication.CreateAccountWeb.plaintextPassword)
+		return plaintextpassword_.MutableNoArena( &::google::protobuf::internal::GetEmptyStringAlreadyInited() );
+	}
+	inline ::std::string* CreateAccountWeb::release_plaintextpassword() {
+		// @@protoc_insertion_point(field_release:authentication.CreateAccountWeb.plaintextPassword)
 
-// sint64 userId = 2;
-inline void CreateAccountWebSuccess::clear_userid() {
-  userid_ = GOOGLE_LONGLONG(0);
-}
-inline ::google::protobuf::int64 CreateAccountWebSuccess::userid() const {
-  // @@protoc_insertion_point(field_get:authentication.CreateAccountWebSuccess.userId)
-  return userid_;
-}
-inline void CreateAccountWebSuccess::set_userid(::google::protobuf::int64 value) {
-  
-  userid_ = value;
-  // @@protoc_insertion_point(field_set:authentication.CreateAccountWebSuccess.userId)
-}
+		return plaintextpassword_.ReleaseNoArena( &::google::protobuf::internal::GetEmptyStringAlreadyInited() );
+	}
+	inline void CreateAccountWeb::set_allocated_plaintextpassword( ::std::string* plaintextpassword ) {
+		if( plaintextpassword != NULL ) {
 
-// -------------------------------------------------------------------
+		}
+		else {
 
-// CreateAccountWebFailure
+		}
+		plaintextpassword_.SetAllocatedNoArena( &::google::protobuf::internal::GetEmptyStringAlreadyInited(), plaintextpassword );
+		// @@protoc_insertion_point(field_set_allocated:authentication.CreateAccountWeb.plaintextPassword)
+	}
 
-// sint64 requestId = 1;
-inline void CreateAccountWebFailure::clear_requestid() {
-  requestid_ = GOOGLE_LONGLONG(0);
-}
-inline ::google::protobuf::int64 CreateAccountWebFailure::requestid() const {
-  // @@protoc_insertion_point(field_get:authentication.CreateAccountWebFailure.requestId)
-  return requestid_;
-}
-inline void CreateAccountWebFailure::set_requestid(::google::protobuf::int64 value) {
-  
-  requestid_ = value;
-  // @@protoc_insertion_point(field_set:authentication.CreateAccountWebFailure.requestId)
-}
+	// -------------------------------------------------------------------
 
-// .authentication.CreateAccountWebFailure.reason theReaseon = 2;
-inline void CreateAccountWebFailure::clear_thereaseon() {
-  thereaseon_ = 0;
-}
-inline ::authentication::CreateAccountWebFailure_reason CreateAccountWebFailure::thereaseon() const {
-  // @@protoc_insertion_point(field_get:authentication.CreateAccountWebFailure.theReaseon)
-  return static_cast< ::authentication::CreateAccountWebFailure_reason >(thereaseon_);
-}
-inline void CreateAccountWebFailure::set_thereaseon(::authentication::CreateAccountWebFailure_reason value) {
-  
-  thereaseon_ = value;
-  // @@protoc_insertion_point(field_set:authentication.CreateAccountWebFailure.theReaseon)
-}
+	// CreateAccountWebSuccess
 
-// -------------------------------------------------------------------
+	// sint64 requestId = 1;
+	inline void CreateAccountWebSuccess::clear_requestid() {
+		requestid_ = GOOGLE_LONGLONG( 0 );
+	}
+	inline ::google::protobuf::int64 CreateAccountWebSuccess::requestid() const {
+		// @@protoc_insertion_point(field_get:authentication.CreateAccountWebSuccess.requestId)
+		return requestid_;
+	}
+	inline void CreateAccountWebSuccess::set_requestid( ::google::protobuf::int64 value ) {
 
-// AuthenticateWeb
+		requestid_ = value;
+		// @@protoc_insertion_point(field_set:authentication.CreateAccountWebSuccess.requestId)
+	}
 
-// sint64 requestId = 1;
-inline void AuthenticateWeb::clear_requestid() {
-  requestid_ = GOOGLE_LONGLONG(0);
-}
-inline ::google::protobuf::int64 AuthenticateWeb::requestid() const {
-  // @@protoc_insertion_point(field_get:authentication.AuthenticateWeb.requestId)
-  return requestid_;
-}
-inline void AuthenticateWeb::set_requestid(::google::protobuf::int64 value) {
-  
-  requestid_ = value;
-  // @@protoc_insertion_point(field_set:authentication.AuthenticateWeb.requestId)
-}
+	// sint64 userId = 2;
+	inline void CreateAccountWebSuccess::clear_userid() {
+		userid_ = GOOGLE_LONGLONG( 0 );
+	}
+	inline ::google::protobuf::int64 CreateAccountWebSuccess::userid() const {
+		// @@protoc_insertion_point(field_get:authentication.CreateAccountWebSuccess.userId)
+		return userid_;
+	}
+	inline void CreateAccountWebSuccess::set_userid( ::google::protobuf::int64 value ) {
 
-// string username = 2;
-inline void AuthenticateWeb::clear_username() {
-  username_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline const ::std::string& AuthenticateWeb::username() const {
-  // @@protoc_insertion_point(field_get:authentication.AuthenticateWeb.username)
-  return username_.GetNoArena();
-}
-inline void AuthenticateWeb::set_username(const ::std::string& value) {
-  
-  username_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:authentication.AuthenticateWeb.username)
-}
+		userid_ = value;
+		// @@protoc_insertion_point(field_set:authentication.CreateAccountWebSuccess.userId)
+	}
+
+	// -------------------------------------------------------------------
+
+	// CreateAccountWebFailure
+
+	// sint64 requestId = 1;
+	inline void CreateAccountWebFailure::clear_requestid() {
+		requestid_ = GOOGLE_LONGLONG( 0 );
+	}
+	inline ::google::protobuf::int64 CreateAccountWebFailure::requestid() const {
+		// @@protoc_insertion_point(field_get:authentication.CreateAccountWebFailure.requestId)
+		return requestid_;
+	}
+	inline void CreateAccountWebFailure::set_requestid( ::google::protobuf::int64 value ) {
+
+		requestid_ = value;
+		// @@protoc_insertion_point(field_set:authentication.CreateAccountWebFailure.requestId)
+	}
+
+	// .authentication.CreateAccountWebFailure.reason theReaseon = 2;
+	inline void CreateAccountWebFailure::clear_thereaseon() {
+		thereaseon_ = 0;
+	}
+	inline ::authentication::CreateAccountWebFailure_reason CreateAccountWebFailure::thereaseon() const {
+		// @@protoc_insertion_point(field_get:authentication.CreateAccountWebFailure.theReaseon)
+		return static_cast< ::authentication::CreateAccountWebFailure_reason >( thereaseon_ );
+	}
+	inline void CreateAccountWebFailure::set_thereaseon( ::authentication::CreateAccountWebFailure_reason value ) {
+
+		thereaseon_ = value;
+		// @@protoc_insertion_point(field_set:authentication.CreateAccountWebFailure.theReaseon)
+	}
+
+	// -------------------------------------------------------------------
+
+	// AuthenticateWeb
+
+	// sint64 requestId = 1;
+	inline void AuthenticateWeb::clear_requestid() {
+		requestid_ = GOOGLE_LONGLONG( 0 );
+	}
+	inline ::google::protobuf::int64 AuthenticateWeb::requestid() const {
+		// @@protoc_insertion_point(field_get:authentication.AuthenticateWeb.requestId)
+		return requestid_;
+	}
+	inline void AuthenticateWeb::set_requestid( ::google::protobuf::int64 value ) {
+
+		requestid_ = value;
+		// @@protoc_insertion_point(field_set:authentication.AuthenticateWeb.requestId)
+	}
+
+	// string email = 2;
+	inline void AuthenticateWeb::clear_email() {
+		email_.ClearToEmptyNoArena( &::google::protobuf::internal::GetEmptyStringAlreadyInited() );
+	}
+	inline const ::std::string& AuthenticateWeb::email() const {
+		// @@protoc_insertion_point(field_get:authentication.AuthenticateWeb.email)
+		return email_.GetNoArena();
+	}
+	inline void AuthenticateWeb::set_email( const ::std::string& value ) {
+
+		email_.SetNoArena( &::google::protobuf::internal::GetEmptyStringAlreadyInited(), value );
+		// @@protoc_insertion_point(field_set:authentication.AuthenticateWeb.email)
+	}
 #if LANG_CXX11
-inline void AuthenticateWeb::set_username(::std::string&& value) {
-  
-  username_.SetNoArena(
-    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:authentication.AuthenticateWeb.username)
-}
-#endif
-inline void AuthenticateWeb::set_username(const char* value) {
-  GOOGLE_DCHECK(value != NULL);
-  
-  username_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:authentication.AuthenticateWeb.username)
-}
-inline void AuthenticateWeb::set_username(const char* value, size_t size) {
-  
-  username_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:authentication.AuthenticateWeb.username)
-}
-inline ::std::string* AuthenticateWeb::mutable_username() {
-  
-  // @@protoc_insertion_point(field_mutable:authentication.AuthenticateWeb.username)
-  return username_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline ::std::string* AuthenticateWeb::release_username() {
-  // @@protoc_insertion_point(field_release:authentication.AuthenticateWeb.username)
-  
-  return username_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline void AuthenticateWeb::set_allocated_username(::std::string* username) {
-  if (username != NULL) {
-    
-  } else {
-    
-  }
-  username_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), username);
-  // @@protoc_insertion_point(field_set_allocated:authentication.AuthenticateWeb.username)
-}
+	inline void AuthenticateWeb::set_email( ::std::string&& value ) {
 
-// string plaintextPassword = 3;
-inline void AuthenticateWeb::clear_plaintextpassword() {
-  plaintextpassword_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline const ::std::string& AuthenticateWeb::plaintextpassword() const {
-  // @@protoc_insertion_point(field_get:authentication.AuthenticateWeb.plaintextPassword)
-  return plaintextpassword_.GetNoArena();
-}
-inline void AuthenticateWeb::set_plaintextpassword(const ::std::string& value) {
-  
-  plaintextpassword_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:authentication.AuthenticateWeb.plaintextPassword)
-}
+		email_.SetNoArena(
+			&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move( value ) );
+		// @@protoc_insertion_point(field_set_rvalue:authentication.AuthenticateWeb.email)
+	}
+#endif
+	inline void AuthenticateWeb::set_email( const char* value ) {
+		GOOGLE_DCHECK( value != NULL );
+
+		email_.SetNoArena( &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string( value ) );
+		// @@protoc_insertion_point(field_set_char:authentication.AuthenticateWeb.email)
+	}
+	inline void AuthenticateWeb::set_email( const char* value, size_t size ) {
+
+		email_.SetNoArena( &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+			::std::string( reinterpret_cast<const char*>( value ), size ) );
+		// @@protoc_insertion_point(field_set_pointer:authentication.AuthenticateWeb.email)
+	}
+	inline ::std::string* AuthenticateWeb::mutable_email() {
+
+		// @@protoc_insertion_point(field_mutable:authentication.AuthenticateWeb.email)
+		return email_.MutableNoArena( &::google::protobuf::internal::GetEmptyStringAlreadyInited() );
+	}
+	inline ::std::string* AuthenticateWeb::release_email() {
+		// @@protoc_insertion_point(field_release:authentication.AuthenticateWeb.email)
+
+		return email_.ReleaseNoArena( &::google::protobuf::internal::GetEmptyStringAlreadyInited() );
+	}
+	inline void AuthenticateWeb::set_allocated_email( ::std::string* email ) {
+		if( email != NULL ) {
+
+		}
+		else {
+
+		}
+		email_.SetAllocatedNoArena( &::google::protobuf::internal::GetEmptyStringAlreadyInited(), email );
+		// @@protoc_insertion_point(field_set_allocated:authentication.AuthenticateWeb.email)
+	}
+
+	// string plaintextPassword = 3;
+	inline void AuthenticateWeb::clear_plaintextpassword() {
+		plaintextpassword_.ClearToEmptyNoArena( &::google::protobuf::internal::GetEmptyStringAlreadyInited() );
+	}
+	inline const ::std::string& AuthenticateWeb::plaintextpassword() const {
+		// @@protoc_insertion_point(field_get:authentication.AuthenticateWeb.plaintextPassword)
+		return plaintextpassword_.GetNoArena();
+	}
+	inline void AuthenticateWeb::set_plaintextpassword( const ::std::string& value ) {
+
+		plaintextpassword_.SetNoArena( &::google::protobuf::internal::GetEmptyStringAlreadyInited(), value );
+		// @@protoc_insertion_point(field_set:authentication.AuthenticateWeb.plaintextPassword)
+	}
 #if LANG_CXX11
-inline void AuthenticateWeb::set_plaintextpassword(::std::string&& value) {
-  
-  plaintextpassword_.SetNoArena(
-    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:authentication.AuthenticateWeb.plaintextPassword)
-}
+	inline void AuthenticateWeb::set_plaintextpassword( ::std::string&& value ) {
+
+		plaintextpassword_.SetNoArena(
+			&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move( value ) );
+		// @@protoc_insertion_point(field_set_rvalue:authentication.AuthenticateWeb.plaintextPassword)
+	}
 #endif
-inline void AuthenticateWeb::set_plaintextpassword(const char* value) {
-  GOOGLE_DCHECK(value != NULL);
-  
-  plaintextpassword_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:authentication.AuthenticateWeb.plaintextPassword)
-}
-inline void AuthenticateWeb::set_plaintextpassword(const char* value, size_t size) {
-  
-  plaintextpassword_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:authentication.AuthenticateWeb.plaintextPassword)
-}
-inline ::std::string* AuthenticateWeb::mutable_plaintextpassword() {
-  
-  // @@protoc_insertion_point(field_mutable:authentication.AuthenticateWeb.plaintextPassword)
-  return plaintextpassword_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline ::std::string* AuthenticateWeb::release_plaintextpassword() {
-  // @@protoc_insertion_point(field_release:authentication.AuthenticateWeb.plaintextPassword)
-  
-  return plaintextpassword_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline void AuthenticateWeb::set_allocated_plaintextpassword(::std::string* plaintextpassword) {
-  if (plaintextpassword != NULL) {
-    
-  } else {
-    
-  }
-  plaintextpassword_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), plaintextpassword);
-  // @@protoc_insertion_point(field_set_allocated:authentication.AuthenticateWeb.plaintextPassword)
-}
+	inline void AuthenticateWeb::set_plaintextpassword( const char* value ) {
+		GOOGLE_DCHECK( value != NULL );
 
-// -------------------------------------------------------------------
+		plaintextpassword_.SetNoArena( &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string( value ) );
+		// @@protoc_insertion_point(field_set_char:authentication.AuthenticateWeb.plaintextPassword)
+	}
+	inline void AuthenticateWeb::set_plaintextpassword( const char* value, size_t size ) {
 
-// AuthenticateWebSuccess
+		plaintextpassword_.SetNoArena( &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+			::std::string( reinterpret_cast<const char*>( value ), size ) );
+		// @@protoc_insertion_point(field_set_pointer:authentication.AuthenticateWeb.plaintextPassword)
+	}
+	inline ::std::string* AuthenticateWeb::mutable_plaintextpassword() {
 
-// sint64 requestId = 1;
-inline void AuthenticateWebSuccess::clear_requestid() {
-  requestid_ = GOOGLE_LONGLONG(0);
-}
-inline ::google::protobuf::int64 AuthenticateWebSuccess::requestid() const {
-  // @@protoc_insertion_point(field_get:authentication.AuthenticateWebSuccess.requestId)
-  return requestid_;
-}
-inline void AuthenticateWebSuccess::set_requestid(::google::protobuf::int64 value) {
-  
-  requestid_ = value;
-  // @@protoc_insertion_point(field_set:authentication.AuthenticateWebSuccess.requestId)
-}
+		// @@protoc_insertion_point(field_mutable:authentication.AuthenticateWeb.plaintextPassword)
+		return plaintextpassword_.MutableNoArena( &::google::protobuf::internal::GetEmptyStringAlreadyInited() );
+	}
+	inline ::std::string* AuthenticateWeb::release_plaintextpassword() {
+		// @@protoc_insertion_point(field_release:authentication.AuthenticateWeb.plaintextPassword)
 
-// sint64 userId = 2;
-inline void AuthenticateWebSuccess::clear_userid() {
-  userid_ = GOOGLE_LONGLONG(0);
-}
-inline ::google::protobuf::int64 AuthenticateWebSuccess::userid() const {
-  // @@protoc_insertion_point(field_get:authentication.AuthenticateWebSuccess.userId)
-  return userid_;
-}
-inline void AuthenticateWebSuccess::set_userid(::google::protobuf::int64 value) {
-  
-  userid_ = value;
-  // @@protoc_insertion_point(field_set:authentication.AuthenticateWebSuccess.userId)
-}
+		return plaintextpassword_.ReleaseNoArena( &::google::protobuf::internal::GetEmptyStringAlreadyInited() );
+	}
+	inline void AuthenticateWeb::set_allocated_plaintextpassword( ::std::string* plaintextpassword ) {
+		if( plaintextpassword != NULL ) {
 
-// string creationDate = 3;
-inline void AuthenticateWebSuccess::clear_creationdate() {
-  creationdate_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline const ::std::string& AuthenticateWebSuccess::creationdate() const {
-  // @@protoc_insertion_point(field_get:authentication.AuthenticateWebSuccess.creationDate)
-  return creationdate_.GetNoArena();
-}
-inline void AuthenticateWebSuccess::set_creationdate(const ::std::string& value) {
-  
-  creationdate_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:authentication.AuthenticateWebSuccess.creationDate)
-}
+		}
+		else {
+
+		}
+		plaintextpassword_.SetAllocatedNoArena( &::google::protobuf::internal::GetEmptyStringAlreadyInited(), plaintextpassword );
+		// @@protoc_insertion_point(field_set_allocated:authentication.AuthenticateWeb.plaintextPassword)
+	}
+
+	// -------------------------------------------------------------------
+
+	// AuthenticateWebSuccess
+
+	// sint64 requestId = 1;
+	inline void AuthenticateWebSuccess::clear_requestid() {
+		requestid_ = GOOGLE_LONGLONG( 0 );
+	}
+	inline ::google::protobuf::int64 AuthenticateWebSuccess::requestid() const {
+		// @@protoc_insertion_point(field_get:authentication.AuthenticateWebSuccess.requestId)
+		return requestid_;
+	}
+	inline void AuthenticateWebSuccess::set_requestid( ::google::protobuf::int64 value ) {
+
+		requestid_ = value;
+		// @@protoc_insertion_point(field_set:authentication.AuthenticateWebSuccess.requestId)
+	}
+
+	// sint64 userId = 2;
+	inline void AuthenticateWebSuccess::clear_userid() {
+		userid_ = GOOGLE_LONGLONG( 0 );
+	}
+	inline ::google::protobuf::int64 AuthenticateWebSuccess::userid() const {
+		// @@protoc_insertion_point(field_get:authentication.AuthenticateWebSuccess.userId)
+		return userid_;
+	}
+	inline void AuthenticateWebSuccess::set_userid( ::google::protobuf::int64 value ) {
+
+		userid_ = value;
+		// @@protoc_insertion_point(field_set:authentication.AuthenticateWebSuccess.userId)
+	}
+
+	// string creationDate = 3;
+	inline void AuthenticateWebSuccess::clear_creationdate() {
+		creationdate_.ClearToEmptyNoArena( &::google::protobuf::internal::GetEmptyStringAlreadyInited() );
+	}
+	inline const ::std::string& AuthenticateWebSuccess::creationdate() const {
+		// @@protoc_insertion_point(field_get:authentication.AuthenticateWebSuccess.creationDate)
+		return creationdate_.GetNoArena();
+	}
+	inline void AuthenticateWebSuccess::set_creationdate( const ::std::string& value ) {
+
+		creationdate_.SetNoArena( &::google::protobuf::internal::GetEmptyStringAlreadyInited(), value );
+		// @@protoc_insertion_point(field_set:authentication.AuthenticateWebSuccess.creationDate)
+	}
 #if LANG_CXX11
-inline void AuthenticateWebSuccess::set_creationdate(::std::string&& value) {
-  
-  creationdate_.SetNoArena(
-    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:authentication.AuthenticateWebSuccess.creationDate)
-}
+	inline void AuthenticateWebSuccess::set_creationdate( ::std::string&& value ) {
+
+		creationdate_.SetNoArena(
+			&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move( value ) );
+		// @@protoc_insertion_point(field_set_rvalue:authentication.AuthenticateWebSuccess.creationDate)
+	}
 #endif
-inline void AuthenticateWebSuccess::set_creationdate(const char* value) {
-  GOOGLE_DCHECK(value != NULL);
-  
-  creationdate_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:authentication.AuthenticateWebSuccess.creationDate)
-}
-inline void AuthenticateWebSuccess::set_creationdate(const char* value, size_t size) {
-  
-  creationdate_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:authentication.AuthenticateWebSuccess.creationDate)
-}
-inline ::std::string* AuthenticateWebSuccess::mutable_creationdate() {
-  
-  // @@protoc_insertion_point(field_mutable:authentication.AuthenticateWebSuccess.creationDate)
-  return creationdate_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline ::std::string* AuthenticateWebSuccess::release_creationdate() {
-  // @@protoc_insertion_point(field_release:authentication.AuthenticateWebSuccess.creationDate)
-  
-  return creationdate_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline void AuthenticateWebSuccess::set_allocated_creationdate(::std::string* creationdate) {
-  if (creationdate != NULL) {
-    
-  } else {
-    
-  }
-  creationdate_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), creationdate);
-  // @@protoc_insertion_point(field_set_allocated:authentication.AuthenticateWebSuccess.creationDate)
-}
+	inline void AuthenticateWebSuccess::set_creationdate( const char* value ) {
+		GOOGLE_DCHECK( value != NULL );
 
-// -------------------------------------------------------------------
+		creationdate_.SetNoArena( &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string( value ) );
+		// @@protoc_insertion_point(field_set_char:authentication.AuthenticateWebSuccess.creationDate)
+	}
+	inline void AuthenticateWebSuccess::set_creationdate( const char* value, size_t size ) {
 
-// AuthenticateWebFailure
+		creationdate_.SetNoArena( &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+			::std::string( reinterpret_cast<const char*>( value ), size ) );
+		// @@protoc_insertion_point(field_set_pointer:authentication.AuthenticateWebSuccess.creationDate)
+	}
+	inline ::std::string* AuthenticateWebSuccess::mutable_creationdate() {
 
-// sint64 requestId = 1;
-inline void AuthenticateWebFailure::clear_requestid() {
-  requestid_ = GOOGLE_LONGLONG(0);
-}
-inline ::google::protobuf::int64 AuthenticateWebFailure::requestid() const {
-  // @@protoc_insertion_point(field_get:authentication.AuthenticateWebFailure.requestId)
-  return requestid_;
-}
-inline void AuthenticateWebFailure::set_requestid(::google::protobuf::int64 value) {
-  
-  requestid_ = value;
-  // @@protoc_insertion_point(field_set:authentication.AuthenticateWebFailure.requestId)
-}
+		// @@protoc_insertion_point(field_mutable:authentication.AuthenticateWebSuccess.creationDate)
+		return creationdate_.MutableNoArena( &::google::protobuf::internal::GetEmptyStringAlreadyInited() );
+	}
+	inline ::std::string* AuthenticateWebSuccess::release_creationdate() {
+		// @@protoc_insertion_point(field_release:authentication.AuthenticateWebSuccess.creationDate)
 
-// .authentication.AuthenticateWebFailure.reason theReaseon = 2;
-inline void AuthenticateWebFailure::clear_thereaseon() {
-  thereaseon_ = 0;
-}
-inline ::authentication::AuthenticateWebFailure_reason AuthenticateWebFailure::thereaseon() const {
-  // @@protoc_insertion_point(field_get:authentication.AuthenticateWebFailure.theReaseon)
-  return static_cast< ::authentication::AuthenticateWebFailure_reason >(thereaseon_);
-}
-inline void AuthenticateWebFailure::set_thereaseon(::authentication::AuthenticateWebFailure_reason value) {
-  
-  thereaseon_ = value;
-  // @@protoc_insertion_point(field_set:authentication.AuthenticateWebFailure.theReaseon)
-}
+		return creationdate_.ReleaseNoArena( &::google::protobuf::internal::GetEmptyStringAlreadyInited() );
+	}
+	inline void AuthenticateWebSuccess::set_allocated_creationdate( ::std::string* creationdate ) {
+		if( creationdate != NULL ) {
+
+		}
+		else {
+
+		}
+		creationdate_.SetAllocatedNoArena( &::google::protobuf::internal::GetEmptyStringAlreadyInited(), creationdate );
+		// @@protoc_insertion_point(field_set_allocated:authentication.AuthenticateWebSuccess.creationDate)
+	}
+
+	// -------------------------------------------------------------------
+
+	// AuthenticateWebFailure
+
+	// sint64 requestId = 1;
+	inline void AuthenticateWebFailure::clear_requestid() {
+		requestid_ = GOOGLE_LONGLONG( 0 );
+	}
+	inline ::google::protobuf::int64 AuthenticateWebFailure::requestid() const {
+		// @@protoc_insertion_point(field_get:authentication.AuthenticateWebFailure.requestId)
+		return requestid_;
+	}
+	inline void AuthenticateWebFailure::set_requestid( ::google::protobuf::int64 value ) {
+
+		requestid_ = value;
+		// @@protoc_insertion_point(field_set:authentication.AuthenticateWebFailure.requestId)
+	}
+
+	// .authentication.AuthenticateWebFailure.reason theReaseon = 2;
+	inline void AuthenticateWebFailure::clear_thereaseon() {
+		thereaseon_ = 0;
+	}
+	inline ::authentication::AuthenticateWebFailure_reason AuthenticateWebFailure::thereaseon() const {
+		// @@protoc_insertion_point(field_get:authentication.AuthenticateWebFailure.theReaseon)
+		return static_cast< ::authentication::AuthenticateWebFailure_reason >( thereaseon_ );
+	}
+	inline void AuthenticateWebFailure::set_thereaseon( ::authentication::AuthenticateWebFailure_reason value ) {
+
+		thereaseon_ = value;
+		// @@protoc_insertion_point(field_set:authentication.AuthenticateWebFailure.theReaseon)
+	}
 
 #ifdef __GNUC__
-  #pragma GCC diagnostic pop
+#pragma GCC diagnostic pop
 #endif  // __GNUC__
 #endif  // !PROTOBUF_INLINE_NOT_IN_HEADERS
-// -------------------------------------------------------------------
+	// -------------------------------------------------------------------
 
-// -------------------------------------------------------------------
+	// -------------------------------------------------------------------
 
-// -------------------------------------------------------------------
+	// -------------------------------------------------------------------
 
-// -------------------------------------------------------------------
+	// -------------------------------------------------------------------
 
-// -------------------------------------------------------------------
+	// -------------------------------------------------------------------
 
 
-// @@protoc_insertion_point(namespace_scope)
+	// @@protoc_insertion_point(namespace_scope)
 
 
 }  // namespace authentication
 
 namespace google {
-namespace protobuf {
+	namespace protobuf {
 
-template <> struct is_proto_enum< ::authentication::CreateAccountWebFailure_reason> : ::google::protobuf::internal::true_type {};
-template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::authentication::CreateAccountWebFailure_reason>() {
-  return ::authentication::CreateAccountWebFailure_reason_descriptor();
-}
-template <> struct is_proto_enum< ::authentication::AuthenticateWebFailure_reason> : ::google::protobuf::internal::true_type {};
-template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::authentication::AuthenticateWebFailure_reason>() {
-  return ::authentication::AuthenticateWebFailure_reason_descriptor();
-}
+		template <> struct is_proto_enum< ::authentication::CreateAccountWebFailure_reason> : ::google::protobuf::internal::true_type {};
+		template <>
+		inline const EnumDescriptor* GetEnumDescriptor< ::authentication::CreateAccountWebFailure_reason>() {
+			return ::authentication::CreateAccountWebFailure_reason_descriptor();
+		}
+		template <> struct is_proto_enum< ::authentication::AuthenticateWebFailure_reason> : ::google::protobuf::internal::true_type {};
+		template <>
+		inline const EnumDescriptor* GetEnumDescriptor< ::authentication::AuthenticateWebFailure_reason>() {
+			return ::authentication::AuthenticateWebFailure_reason_descriptor();
+		}
 
-}  // namespace protobuf
+	}  // namespace protobuf
 }  // namespace google
 
-// @@protoc_insertion_point(global_scope)
+   // @@protoc_insertion_point(global_scope)
 
 #endif  // PROTOBUF_authentication_2eproto__INCLUDED
