@@ -137,7 +137,7 @@ int main()
 
 				string mCreationDate;
 				long long result = g_userManager.authenticateAccount( aw.email(), aw.plaintextpassword(), mCreationDate );
-				if( result != -1 ) 
+				if( result > 0 ) 
 				{
 					// The user was authenticated
 					authentication::AuthenticateWebSuccess aws;
