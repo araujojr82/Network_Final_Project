@@ -117,7 +117,7 @@ long long cDataBase::insertUser( std::string username, std::string password, std
 
 }
 
-long long cDataBase::selectUser( std::string username, std::string &password, std::string &salt )
+long long cDataBase::selectUser( std::string username, std::string &password, std::string &salt, std::string &lastLogin )
 {
 	try
 	{
@@ -143,7 +143,7 @@ long long cDataBase::selectUser( std::string username, std::string &password, st
 		while( res->next() )
 		{
 			thisUser.id = res->getInt( "id" );
-			thisUser.username = res->getInt( "username" );
+			thisUser.username = res->getString( "username" );
 			thisUser.salt = res->getString( "salt" );
 			thisUser.password = res->getString( "password" );
 			thisUser.last_login = res->getString( "last_login" );
@@ -169,7 +169,7 @@ long long cDataBase::selectUser( std::string username, std::string &password, st
 			delete prep_stmt;
 
 			salt = thisUser.salt;
-			//creationDate = thisUser.creationDate;
+			lastLogin = thisUser.last_login;
 			password = thisUser.password;
 
 			delete stmt;

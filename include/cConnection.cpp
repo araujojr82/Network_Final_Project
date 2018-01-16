@@ -33,7 +33,8 @@ void cConnection::connectToServer( InitInfo info )
 	m_hints.ai_protocol = IPPROTO_TCP;
 
 	// Resolve the server address and port
-	m_iResult = getaddrinfo( info.serverAddr, DEFAULT_PORT, &m_hints, &m_result );
+	//m_iResult = getaddrinfo( info.serverAddr, DEFAULT_PORT, &m_hints, &m_result );
+	m_iResult = getaddrinfo( info.serverAddr, info.serverPort, &m_hints, &m_result );
 	if( m_iResult != 0 )
 	{
 		printf( "getaddrinfo failed with error: %d\n", m_iResult );

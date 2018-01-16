@@ -29,11 +29,16 @@ int main()
 {
 	// Init connection info
 	InitInfo authServer;
-	cout << "Authentication Server initialization process\n"
-		<< "Please enter the IP adress of the Chat Server:\n";
-	char address[256];
+	cout << "Authentication Server initialization process" << endl
+		<< "Please enter the Game Server's IP adress: " << endl;
+	char address[MAX_ARRAY_SIZE];
 	cin >> address;
 	authServer.serverAddr = address;
+
+	cout << "Please enter the Game Server's port (default 5000):" << endl;
+	char port[MAX_PORT_SIZE];
+	cin >> port;
+	authServer.serverPort = port;
 
 	// Name of the Authentication Server
 	authServer.username = "AuthServer";
@@ -135,15 +140,15 @@ int main()
 				authentication::AuthenticateWeb aw;
 				aw.ParseFromString( pbStr );
 
-				string mCreationDate;
-				long long result = g_userManager.authenticateAccount( aw.email(), aw.plaintextpassword() );
+				string mlastLogin;
+				long long result = g_userManager.authenticateAccount( aw.email(), aw.plaintextpassword(), mlastLogin );
 				if( result > 0 ) 
 				{
 					// The user was authenticated
 					authentication::AuthenticateWebSuccess aws;
 					aws.set_requestid( aw.requestid() );
 					aws.set_userid( result );
-					aws.set_creationdate( mCreationDate );
+					aws.set_creationdate( mlastLogin );
 					string sendMsg = aws.SerializeAsString();
 					myConn.sendMessage( authServer, AUTHENTICATE_WEB_SUCCESS, sendMsg );
 				}

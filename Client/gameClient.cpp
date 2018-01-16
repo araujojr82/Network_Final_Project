@@ -51,7 +51,7 @@ int main()
 	cout << "|                |_____\\___/|_.__/|_.__/ \\__, |___/\\__\\___|_|                   |\n";
 	cout << "|                                        |___/                                  |\n";
 	cout << "+===============================================================================+\n";
-	cout << "Please type in the ip adress of the game server\n"
+	cout << "Please type in the Game Server's ip adress:" << endl
 		<< PROMPT;
 
 	// Get the server address
@@ -60,7 +60,15 @@ int main()
 	user.serverAddr = serverAddr;
 
 	// Read the user's first name
-	cout << "Please type in your username:\n" << PROMPT;
+	cout << "Please type in the Game Server's port (default 5000):" << endl 
+	<< PROMPT;
+	char serverPort[MAX_ARRAY_SIZE];;
+	cin >> serverPort;
+	user.serverPort = serverPort;
+
+	// Read the user's first name
+	cout << "Please type in your username: " << endl
+	<< PROMPT;
 	string firstName;
 	cin >> firstName;
 	user.username = firstName;

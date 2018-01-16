@@ -13,7 +13,7 @@ public:
     // Returns the AccountID or:
     // -1 if the user was not found
     // -4 Password error    
-    long long authenticateAccount(std::string username, std::string password );
+    long long authenticateAccount(std::string username, std::string password, std::string &lastLogin );
 
 };
 

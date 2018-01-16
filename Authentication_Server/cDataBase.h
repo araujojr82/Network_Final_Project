@@ -31,7 +31,7 @@ public:
 
 	// Returns the accountID or '-1' if the user was not found
 	// Writes the password and salt back when finding a user	
-	long long selectUser(std::string username, std::string &password, std::string &salt );
+	long long selectUser(std::string username, std::string &password, std::string &salt, std::string &lastLogin );
 
 };
 

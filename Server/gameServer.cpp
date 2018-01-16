@@ -952,7 +952,7 @@ void treatMessage( LPSOCKET_INFORMATION sa, string msg )
 				if( g_socketArray[i]->m_requestedID == aws.requestid() ) 
 				{
 					g_socketArray[i]->m_isAuthenticated = true;
-					sendMsg( g_socketArray[i], "Authentication successful, account created on " + aws.creationdate(), "Authentication Server" );
+					sendMsg( g_socketArray[i], "Authentication successful, last login : " + aws.creationdate(), "Authentication Server" );
 				}
 			}
 		}

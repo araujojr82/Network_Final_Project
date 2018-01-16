@@ -14,11 +14,11 @@ long long cUserManager::createUserAccount( std::string username, std::string pas
 	return dataBase.insertUser( username, hashedPassord, salt );
 }
 
-long long cUserManager::authenticateAccount( std::string username, std::string password )
+long long cUserManager::authenticateAccount( std::string username, std::string password, std::string &lastLogin )
 {
 	std::string dbHashedPassord;
 	std::string dbSalt;
-	long long result = dataBase.selectUser( username, dbHashedPassord, dbSalt );
+	long long result = dataBase.selectUser( username, dbHashedPassord, dbSalt, lastLogin );
 
 	if( result > 0 )
 	{

@@ -18,6 +18,7 @@
 #define DEFAULT_PORT "5000"
 #define DEFAULT_BUFFER_LENGTH 512
 #define MAX_ARRAY_SIZE 256
+#define MAX_PORT_SIZE 5
 
 using namespace std;
 
