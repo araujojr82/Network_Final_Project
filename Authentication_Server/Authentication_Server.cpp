@@ -46,13 +46,13 @@ int main()
 	// Create a cCoonection object
 	cConnection myConn;
 
-	// Connect to the Chat Server
+	// Connect to the Game Server
 	myConn.connectToServer( authServer );
 
 	// Validation Process...
 	//-------------------------------------------------------------------------
 
-	// Send a validation message with a hash to the Chat Server
+	// Send a validation message with a hash to the Game Server
 	myConn.sendMessage( authServer, VALIDATE_SERVER, "TEMP_HASH" );
 
 	string chatServerMsg;
@@ -61,7 +61,7 @@ int main()
 	// We didn't hear from the server yet
 	while( chatServerMsg == "" && myConn.m_isAlive )
 	{
-		cout << "The Chat Server did not validate your server yet.\n"
+		cout << "The Game Server did not validate your server yet.\n"
 			<< "Try again? (y) or (n):";
 		char answer;
 		cin >> answer;
@@ -88,7 +88,7 @@ int main()
 	// End of Validation Process
 	//-------------------------------------------------------------------------
 
-	// Print the Chat Server Message (if there is one)
+	// Print the Game Server Message (if there is one)
 	cout << chatServerMsg;
 
 	// Main Loop

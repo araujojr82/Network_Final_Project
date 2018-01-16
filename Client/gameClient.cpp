@@ -33,6 +33,7 @@ using namespace std;
 
 // Function signatures
 void checkRoom( InitInfo&, string, vector<string>& );
+void checkLeftRoom( InitInfo&, string, vector<string>& );
 void updateLobbyList( InitInfo&, string, cConnection& );
 int readCase( string&, InitInfo&, vector<string>&, cConnection& );
 
@@ -43,14 +44,14 @@ int main()
 {
 	InitInfo user;  // user struct data
 
-	cout << "+===============================================================================+\n";
-	cout << "|                 _          _     _               _                            |\n";
-	cout << "|                | |    ___ | |__ | |__  _   _ ___| |_ ___ _ __                 |\n";
-	cout << "|                | |   / _ \\| '_ \\| '_ \\| | | / __| __/ _ \\ '__|                |\n";
-	cout << "|                | |__| (_) | |_) | |_) | |_| \\__ \\ ||  __/ |                   |\n";
-	cout << "|                |_____\\___/|_.__/|_.__/ \\__, |___/\\__\\___|_|                   |\n";
-	cout << "|                                        |___/                                  |\n";
-	cout << "+===============================================================================+\n";
+	cout << "+===============================================================================+" << endl;
+	cout << "|                 _          _     _               _                            |" << endl;
+	cout << "|                | |    ___ | |__ | |__  _   _ ___| |_ ___ _ __                 |" << endl;
+	cout << "|                | |   / _ \\| '_ \\| '_ \\| | | / __| __/ _ \\ '__|                |" << endl;
+	cout << "|                | |__| (_) | |_) | |_) | |_| \\__ \\ ||  __/ |                   |" << endl;
+	cout << "|                |_____\\___/|_.__/|_.__/ \\__, |___/\\__\\___|_|                   |" << endl;
+	cout << "|                                        |___/                                  |" << endl;
+	cout << "+===============================================================================+" << endl;
 	cout << "Please type in the Game Server's ip adress:" << endl
 		<< PROMPT;
 
@@ -62,7 +63,7 @@ int main()
 	// Read the user's first name
 	cout << "Please type in the Game Server's port (default 5000):" << endl 
 	<< PROMPT;
-	char serverPort[MAX_ARRAY_SIZE];;
+	char serverPort[MAX_PORT_SIZE];
 	cin >> serverPort;
 	user.serverPort = serverPort;
 
@@ -80,21 +81,21 @@ int main()
 	if( myConn.m_isAlive )
 	{
 		system( "cls" );
-		cout << "===============================================================================\n";
-		cout << "|                 _          _     _               _                            |\n";
-		cout << "|                | |    ___ | |__ | |__  _   _ ___| |_ ___ _ __                 |\n";
-		cout << "|                | |   / _ \\| '_ \\| '_ \\| | | / __| __/ _ \\ '__|                |\n";
-		cout << "|                | |__| (_) | |_) | |_) | |_| \\__ \\ ||  __/ |                   |\n";
-		cout << "|                |_____\\___/|_.__/|_.__/ \\__, |___/\\__\\___|_|                   |\n";
-		cout << "|                                        |___/                                  |\n";
-		cout << "================================================================================\n";
-		cout << user.username << ", you are now connected to the server.\n"
-			<< "You can type -help for a list of commands.\n\n";
+		cout << "===============================================================================" << endl;
+		cout << "|                 _          _     _               _                            |" << endl;
+		cout << "|                | |    ___ | |__ | |__  _   _ ___| |_ ___ _ __                 |" << endl;
+		cout << "|                | |   / _ \\| '_ \\| '_ \\| | | / __| __/ _ \\ '__|                |" << endl;
+		cout << "|                | |__| (_) | |_) | |_) | |_| \\__ \\ ||  __/ |                   |" << endl;
+		cout << "|                |_____\\___/|_.__/|_.__/ \\__, |___/\\__\\___|_|                   |" << endl;
+		cout << "|                                        |___/                                  |" << endl;
+		cout << "================================================================================" << endl;
+		cout << user.username << ", you are now connected to the server." << endl
+			<< "You can type -help for a list of commands." << endl << endl;
 		system( "pause" );
 	}
 	else
 	{
-		cout << "Something went wrong. We didn't connected to the server!\n";
+		cout << "Something went wrong. We didn't connected to the server!" << endl;
 		Sleep( 6000 );
 	}
 
@@ -103,14 +104,6 @@ int main()
 	string srvMessage;              // The message that comes from the server
 	string chatBuffer;              // Stores all the received messages
 	vector<string> connectedRooms;  // Stores the connected rooms locally
-
-	// TODO Ask the server for the lobby options and store them in a structure
-	//( Map Names, Game Modes, Max Number of Players )
-	// Vector of Map Names
-	// map1, map2, map3
-	// Vector of Game Modes
-	// FREE_FOR_ALL, DUEL, TEAM
-	// Integer Max number of players
 
 	// Main chat loop
 	while( myConn.m_isAlive )
@@ -122,6 +115,7 @@ int main()
 		if( srvMessage != "" )
 		{
 			checkRoom( user, srvMessage, connectedRooms );
+			checkLeftRoom( user, srvMessage, connectedRooms );
 			updateLobbyList( user, srvMessage, myConn );
 			chatBuffer += srvMessage;
 		}
@@ -130,19 +124,20 @@ int main()
 		system( "cls" );
 		for( int i = 0; i < 30; i++ )
 		{
-			cout << '\n';
+			cout << endl;
 		}
 
 		cout << chatBuffer;
-		cout << "________________________________________________________________________________\n";
-		cout << "Press Enter to update messages. Type -help for help.\n";
-		cout << "Connected to ";
+		cout << "________________________________________________________________________________" << endl;
+		cout << "Press Enter to update messages. Type -help for help." << endl;		
+		cout << user.username << " you are currently connected to: " << endl;
 		for( int i = 0; i < connectedRooms.size(); i++ )
 		{
-			cout << connectedRooms[i] << " ";
+			if( i > 0 ) cout << ", " << connectedRooms[i];
+			else cout << connectedRooms[i];			
 		}
-		cout << '\n';
-		cout << "================================================================================\n";
+		cout << endl;
+		cout << "================================================================================" << endl;
 
 		// Get input
 		cout << PROMPT;
@@ -157,9 +152,9 @@ int main()
 	// There is no connection anymore. Close it!
 	myConn.closeConnection();
 	system( "cls" );
-	cout << "================================================================================\n";
-	cout << "                        Thanks for using Lobbyster!\n";
-	cout << "================================================================================\n";
+	cout << "================================================================================" << endl;
+	cout << "                        Thanks for using Lobbyster!" << endl;
+	cout << "================================================================================" << endl;
 	Sleep( 4000 );
 
 
@@ -173,7 +168,7 @@ int main()
 void checkRoom( InitInfo& user, string message, vector<string>& connectedRooms )
 {
 	// The beggining og the message should be:
-	string msgHead = "Chat Server->" + user.username + " has connected to ";
+	string msgHead = "Game Server->" + user.username + " has connected to ";
 
 	// Is it big enough?
 	if( message.size() > msgHead.size() )
@@ -191,11 +186,43 @@ void checkRoom( InitInfo& user, string message, vector<string>& connectedRooms )
 	}
 }
 
+// Check if we were removed from a lobby by the Game Server. If yes, we update our local lobby vector.
+void checkLeftRoom( InitInfo& user, string message, vector<string>& connectedRooms )
+{
+	// The beggining og the message should be:
+	string msgHead = "Game Server->" + user.username + " has left ";
+
+	// Is it big enough?
+	if( message.size() > msgHead.size() )
+	{
+		// Check if the begginings match
+		for( int i = 0; i < msgHead.size(); i++ )
+		{
+			if( message.at( i ) != msgHead.at( i ) )
+				return;
+		}
+		
+		// Format the string to contain only the room name
+		int breakPosition = message.find_first_of( '\n' );
+		string theRoom = message.substr( msgHead.size(), breakPosition - msgHead.size() );
+
+		vector<string> theNewRooms;
+		theNewRooms.clear();
+		for( int i = 0; i < connectedRooms.size(); i++ )
+		{
+			if( connectedRooms[i] != theRoom )
+				theNewRooms.push_back( connectedRooms[i] );
+		}
+		connectedRooms.clear();
+		connectedRooms = theNewRooms;
+	}
+}
+
 // Check if there's any lobby created on the server.
 void updateLobbyList( InitInfo& user, string message, cConnection& myConn )
 {
 	// The beggining og the message should be:
-	string msgHead = "Chat Server->List of available lobbies:";
+	string msgHead = "Game Server->List of available lobbies:";
 
 	string lobbyNum;
 
@@ -231,7 +258,7 @@ void updateLobbyList( InitInfo& user, string message, cConnection& myConn )
 				// Is there a new message from Server?
 				if( newSrvMessage != "" )
 				{
-					msgHead = "Chat Server->Lobby";
+					msgHead = "Game Server->Lobby";
 
 					// Is it big enough?
 					if( newSrvMessage.size() > msgHead.size() )
@@ -244,11 +271,10 @@ void updateLobbyList( InitInfo& user, string message, cConnection& myConn )
 						}
 
 						string lInfo = newSrvMessage.substr( msgHead.size()+2, newSrvMessage.size() - msgHead.size() - 1 );
-						//cout << lInfo << endl;
 
 						Lobby newLobby;
 						
-						newLobby.mapName = lInfo.substr( 0, lInfo.find( ",", 0 ) );
+						newLobby.gameMap = ( gameMaps )stoi( lInfo.substr( 0, lInfo.find( ",", 0 ) ) );
 						lInfo = lInfo.substr( lInfo.find( ",", 0 ) + 1, lInfo.length() ); // new string
 
 						newLobby.lobbyName = lInfo.substr( 0, lInfo.find( ",", 0 ) );
@@ -264,7 +290,6 @@ void updateLobbyList( InitInfo& user, string message, cConnection& myConn )
 						lInfo = lInfo.substr( lInfo.find( ",", 0 ) + 1, lInfo.length() ); // new string
 
 						newLobby.hostName = lInfo.substr( 0, lInfo.find( "\n", 0 ) );
-						//lInfo = lInfo.substr( lInfo.find( ",", 0 ) + 1, lInfo.length() ); // new string
 
 						g_vecServerLobbies.push_back( newLobby );
 					}
@@ -285,7 +310,7 @@ void updateLobbyList( InitInfo& user, string message, cConnection& myConn )
 			for( int j = 0; j != g_vecServerLobbies.size(); j++ )
 			{
 				cout << "| " 
-					<< setw( 18 ) << left << g_vecServerLobbies[j].mapName << setw( 2 ) << " | "
+					<< setw( 18 ) << left << getServerMapText(g_vecServerLobbies[j].gameMap ) << setw( 2 ) << " | "
 					<< setw( 18 ) << g_vecServerLobbies[j].lobbyName << setw( 2 ) << " | "
 					<< setw( 18 ) << getGameModeText( g_vecServerLobbies[j].gameMode ) << setw( 2 ) << " | "
 					<< "( " << setw( 2 ) << to_string( g_vecServerLobbies[j].openSpots )
@@ -308,18 +333,18 @@ int readCase( string& myMessage, InitInfo& user, vector<string>& connectedRooms,
 
 		for( int i = 0; i < 30; i++ )
 		{
-			cout << '\n';
+			cout << endl;
 		}
 
-		cout << "Those are the available commands:\n"
-			<< "-new    : Creates a new user\n"
-			<< "-auth   : Starts the authentication process for a user;\n"
-			<< "-list   : List the lobbies availables on the Server ;\n"
-			<< "-create : Creates a lobby in the Game Server ;\n"
-			<< "-join   : Joins a lobby in the Game Server;\n"
-			<< "-leave  : Leaves a specific lobby from the Game Server;\n"
-			<< "-exit   : Exit the client application.\n"
-			<< "================================================================================\n"
+		cout << "Those are the available commands:" << endl
+			<< "-new    : Creates a new user" << endl
+			<< "-auth   : Starts the authentication process for a user;" << endl
+			<< "-list   : List the lobbies availables on the Server;" << endl
+			<< "-create : Creates a lobby in the Game Server ;" << endl
+			<< "-join   : Joins a lobby in the Game Server;" << endl
+			<< "-leave  : Leaves a specific lobby from the Game Server;" << endl
+			<< "-exit   : Exit the client application." << endl
+			<< "================================================================================" << endl
 			<< PROMPT;
 
 		// Get the new command
@@ -338,16 +363,12 @@ int readCase( string& myMessage, InitInfo& user, vector<string>& connectedRooms,
 	{
 		string answer;
 		myMessage = "";
-		//cout << "Please type in your email\n";
-		//cout << PROMPT;
-		//cin >> answer;
-		//user.email = answer;
-		cout << "Please type in your password\n";
+		cout << "Please type in your password" << endl;
 		cout << PROMPT;
 		cin >> answer;
 		while( answer.size() < 6 )
 		{
-			cout << "Password should be at least 6 characters. Try again!\n";
+			cout << "Password should be at least 6 characters. Try again!" << endl;
 			cout << PROMPT;
 			cin >> answer;
 		}
@@ -360,16 +381,12 @@ int readCase( string& myMessage, InitInfo& user, vector<string>& connectedRooms,
 	{
 		string answer;
 		myMessage = "";
-		//cout << "Please type in your email\n";
-		//cout << PROMPT;
-		//cin >> answer;
-		//user.email = answer;
-		cout << "Please type in your password\n";
+		cout << "Please type in your password" << endl;
 		cout << PROMPT;
 		cin >> answer;
 		while( answer.size() < 6 )
 		{
-			cout << "Password should be at least 6 characters. Try again!\n";
+			cout << "Password should be at least 6 characters. Try again!" << endl;
 			cout << PROMPT;
 			cin >> answer;
 		}
@@ -382,29 +399,30 @@ int readCase( string& myMessage, InitInfo& user, vector<string>& connectedRooms,
 	{
 		string mapName, lobbyName, gameMode, totalSpots;
 		myMessage = "";
-		cout << "Please type in the name of the room\n";
+		cout << "Please type in the name of the lobby" << endl;
 		cout << PROMPT;
 		cin >> lobbyName;
-		//user.room = lobbyName;
-		cout << "Select Map ( Type in the number )\n";
+		cout << "Select Map ( Type in the number )" << endl;
+		cout << "Maps available:" << endl;
+		for( int i = 0; i < vecGameMaps.size(); i++ )
+		{
+			cout << i+1 << ": " << getServerMapText( vecGameMaps[i] ) << endl;
+		}	
 		cout << PROMPT;
 		cin >> mapName;
-		cout << "Select Game Mode ( Type in the number )\n";
+		cout << "Select Game Mode ( Type in the number )" << endl;
+		for( int i = 0; i < vecGameModes.size(); i++ )
+		{
+			cout << i+1 << ": " << getGameModeText( vecGameModes[i] ) << endl;
+		}
 		cout << PROMPT;
 		cin >> gameMode;
-		cout << "Choose Max number of players ( MAX: 10 )\n";
+		cout << "Choose Max number of players ( MAX: " << MAX_PLAYERS << " )" << endl;
 		cout << PROMPT;
 		cin >> totalSpots;
 
 		string lobbyInfo = mapName + "," + lobbyName + "," + gameMode + "," + totalSpots;
 		
-		////newLobby.mapName = "map3";
-		////newLobby.lobbyName = "lobby3";
-		////newLobby.gameMode = gameModes::TEAM;
-		////newLobby.openSpots = 1;
-		////newLobby.totalSpots = 6;
-		////newLobby.hostName = "Newbie";
-
 		myConn.sendMessage( user, CREATE_ROOM, lobbyInfo );
 	}
 
@@ -412,7 +430,7 @@ int readCase( string& myMessage, InitInfo& user, vector<string>& connectedRooms,
 	if( myMessage == "-join" )
 	{
 		myMessage = "";
-		cout << "Please type in the name of the room\n";
+		cout << "Please type in the name of the lobby" << endl;
 		cout << PROMPT;
 		string answer;
 		cin >> answer;
@@ -424,17 +442,23 @@ int readCase( string& myMessage, InitInfo& user, vector<string>& connectedRooms,
 	if( myMessage == "-leave" )
 	{
 		myMessage = "";
-		cout << "Please type in the name of the room\n";
+		cout << "Please type in the name of the lobby" << endl;
 		cout << PROMPT;
 		string answer;
 		cin >> answer;
 		user.room = answer;
+
+		vector<string> theNewRooms;
+		theNewRooms.clear();
 		for( int i = 0; i < connectedRooms.size(); i++ )
 		{
-			if( connectedRooms.at( i ) == user.room )
-				connectedRooms.at( i ).erase();
+			if( connectedRooms[i] != user.room )
+				theNewRooms.push_back( connectedRooms[i] );
 		}
+		connectedRooms.clear();
+		connectedRooms = theNewRooms;
 		myConn.sendMessage( user, LEAVE_ROOM, "" );
+
 	}
 
 	// EXIT

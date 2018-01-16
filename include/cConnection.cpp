@@ -107,7 +107,7 @@ void cConnection::sendMessage( InitInfo info, char msgID, string message )
 		// Check if the packet is too big
 		if( packetLength > 519 )
 		{ // max lenth shouldn't be more than 519 bytes
-			cout << "Buffer overflow sendind the JOIN message!\n";
+			cout << "Buffer overflow sendind the JOIN message!" << endl;
 			Sleep( 3000 );
 			return;
 		}
@@ -145,7 +145,7 @@ void cConnection::sendMessage( InitInfo info, char msgID, string message )
 		// Check if the packet is too big
 		if( packetLength > 65542 )
 		{ // max lenth shouldn't be more than 65,542 bytes        
-			cout << "Buffer overflow sendind the TEXT message!\n";
+			cout << "Buffer overflow sendind the TEXT message!" << endl;
 			Sleep( 3000 );
 			return;
 		}
@@ -181,7 +181,7 @@ void cConnection::sendMessage( InitInfo info, char msgID, string message )
 		// Check if the packet is too big
 		if( packetLength > 65542 )
 		{ // max lenth shouldn't be more than 65,542 bytes        
-			cout << "Buffer overflow sendind the CREATE message!\n";
+			cout << "Buffer overflow sendind the CREATE message!" << endl;
 			Sleep( 3000 );
 			return;
 		}
@@ -222,7 +222,7 @@ void cConnection::sendMessage( InitInfo info, char msgID, string message )
 		// Check if the packet is too big
 		if( packetLength > 519 )
 		{ // max lenth shouldn't be more than 519 bytes
-			cout << "Buffer overflow sendind the JOIN message!\n";
+			cout << "Buffer overflow sendind the JOIN message!" << endl;
 			Sleep( 3000 );
 			return;
 		}
@@ -260,7 +260,7 @@ void cConnection::sendMessage( InitInfo info, char msgID, string message )
 		// Check if the packet is too big
 		if( packetLength > 262 ) 
 		{ // max lenth shouldn't be more than 262 bytes        
-			cout << "Buffer overflow sendind the LEAVE message!\n";
+			cout << "Buffer overflow sendind the LEAVE message!" << endl;
 			Sleep( 3000 );
 			return;
 		}
@@ -290,7 +290,7 @@ void cConnection::sendMessage( InitInfo info, char msgID, string message )
 		// Check if the packet is too big
 		if( packetLength > 65542 ) 
 		{ // max lenth shouldn't be more than 65,542 bytes        
-			cout << "Buffer overflow sendind the TEXT message!\n";
+			cout << "Buffer overflow sendind the TEXT message!" << endl;
 			Sleep( 3000 );
 			return;
 		}
@@ -323,7 +323,7 @@ void cConnection::sendMessage( InitInfo info, char msgID, string message )
 		// Check if the packet is too big
 		if( packetLength > 519 )
 		{ // max lenth shouldn't be more than 519 bytes        
-			cout << "Buffer overflow sendind the ADD message!\n";
+			cout << "Buffer overflow sendind the ADD message!" << endl;
 			Sleep( 3000 );
 			return;
 		}
@@ -362,7 +362,7 @@ void cConnection::sendMessage( InitInfo info, char msgID, string message )
 		// Check if the packet is too big
 		if( packetLength > 519 ) 
 		{ // max lenth shouldn't be more than 519 bytes        
-			cout << "Buffer overflow sendind the ADD message!\n";
+			cout << "Buffer overflow sendind the ADD message!" << endl;
 			Sleep( 3000 );
 			return;
 		}
@@ -402,7 +402,7 @@ void cConnection::sendMessage( InitInfo info, char msgID, string message )
 		// Check if the packet is too big
 		if( packetLength > 519 ) 
 		{ // max lenth shouldn't be more than 519 bytes        
-			cout << "Buffer overflow sendind the VALIDATE_SERVER message!\n";
+			cout << "Buffer overflow sendind the VALIDATE_SERVER message!" << endl;
 			Sleep( 3000 );
 			return;
 		}
@@ -437,7 +437,7 @@ void cConnection::sendMessage( InitInfo info, char msgID, string message )
 		// Check if the packet is too big
 		if( packetLength > 65543 ) 
 		{ // max lenth shouldn't be more than 65,543 bytes        
-			cout << "Buffer overflow sending the CREATE_ACCOUNT_WEB_SUCCESS message!\n";
+			cout << "Buffer overflow sending the CREATE_ACCOUNT_WEB_SUCCESS message!" << endl;
 			Sleep( 3000 );
 			return;
 		}
@@ -466,7 +466,7 @@ void cConnection::sendMessage( InitInfo info, char msgID, string message )
 		// Check if the packet is too big
 		if( packetLength > 65543 ) 
 		{ // max lenth shouldn't be more than 65,543 bytes        
-			cout << "Buffer overflow sending the CREATE_ACCOUNT_WEB_FAILURE message!\n";
+			cout << "Buffer overflow sending the CREATE_ACCOUNT_WEB_FAILURE message!" << endl;
 			Sleep( 3000 );
 			return;
 		}
@@ -494,7 +494,7 @@ void cConnection::sendMessage( InitInfo info, char msgID, string message )
 		// Check if the packet is too big
 		if( packetLength > 65543 ) 
 		{ // max lenth shouldn't be more than 65,543 bytes        
-			cout << "Buffer overflow sending the CREATE_ACCOUNT_WEB_SUCCESS message!\n";
+			cout << "Buffer overflow sending the CREATE_ACCOUNT_WEB_SUCCESS message!" << endl;
 			Sleep( 3000 );
 			return;
 		}
@@ -521,7 +521,7 @@ void cConnection::sendMessage( InitInfo info, char msgID, string message )
 
 		// Check if the packet is too big
 		if( packetLength > 65543 ) { // max lenth shouldn't be more than 65,543 bytes        
-			cout << "Buffer overflow sending the CREATE_ACCOUNT_WEB_FAILURE message!\n";
+			cout << "Buffer overflow sending the CREATE_ACCOUNT_WEB_FAILURE message!" << endl;
 			Sleep( 3000 );
 			return;
 		}

@@ -1,8 +1,8 @@
-CREATE DATABASE  IF NOT EXISTS `info-6016` /*!40100 DEFAULT CHARACTER SET utf8 */;
-USE `info-6016`;
+CREATE DATABASE  IF NOT EXISTS `lobbyster` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `lobbyster`;
 -- MySQL dump 10.13  Distrib 5.7.17, for Win64 (x86_64)
 --
--- Host: localhost    Database: info-6016
+-- Host: localhost    Database: lobbyster
 -- ------------------------------------------------------
 -- Server version	5.7.20-log
 
@@ -18,37 +18,21 @@ USE `info-6016`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `user`
+-- Table structure for table `accounts`
 --
 
-DROP TABLE IF EXISTS `user`;
+DROP TABLE IF EXISTS `accounts`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `user` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `last_login` timestamp(6) NULL DEFAULT NULL,
-  `creation_date` datetime(6) DEFAULT NULL,
+CREATE TABLE `accounts` (
+  `id` bigint(8) NOT NULL AUTO_INCREMENT,
+  `username` varchar(64) NOT NULL,
+  `salt` binary(64) NOT NULL,
+  `password` binary(64) NOT NULL,
+  `last_login` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `ID` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `web_auth`
---
-
-DROP TABLE IF EXISTS `web_auth`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `web_auth` (
-  `id` bigint(8) NOT NULL AUTO_INCREMENT,
-  `email` varchar(255) DEFAULT NULL,
-  `salt` binary(64) DEFAULT NULL,
-  `hashed_password` char(64) DEFAULT NULL,
-  `userId` bigint(8) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `email` (`email`,`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -60,4 +44,4 @@ CREATE TABLE `web_auth` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-12-18 20:35:03
+-- Dump completed on 2018-01-15 22:37:52
